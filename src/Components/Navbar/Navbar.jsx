@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import freshcartLogo from "../../assets/images/navbar/freshcart-logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -15,6 +15,9 @@ export default function Navbar() {
     setUserToken("");
     navigate("login")
   }
+
+  // console.log(loc.pathname);
+  
   return (
     <>
       <nav className="py-3 bg-gray-200">

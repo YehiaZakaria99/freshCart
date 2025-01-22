@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Register from "./Components/Register/Register";
@@ -11,6 +11,7 @@ import Cart from "./Components/Cart/Cart";
 import Brands from "./Components/Brands/Brands";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import UserContextProvider from "./Context/UserContext";
+import { useEffect, useState } from "react";
 
 
 
@@ -19,13 +20,13 @@ const routes = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: localStorage.getItem("userToken") ? <ProtectedRoute><Home /></ProtectedRoute> : <Register /> },
-      { path: "home", element: <ProtectedRoute><Home /></ProtectedRoute> },
-      { path: "login", element: <Login />},
-      { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
-      { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
-      { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
-      { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
+      { index: true, element:  <Register /> },
+      { path: "/home", element: <ProtectedRoute><Home /></ProtectedRoute> },
+      { path: "/login", element: <Login />},
+      { path: "/products", element: <ProtectedRoute><Products /></ProtectedRoute> },
+      { path: "/categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
+      { path: "/cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
+      { path: "/brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
       { path: "*", element: <Notfound /> },
     ],
   },
