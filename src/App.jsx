@@ -9,8 +9,10 @@ import Products from "./Components/Products/Products";
 import Categories from "./Components/Categories/Categories";
 import Cart from "./Components/Cart/Cart";
 import Brands from "./Components/Brands/Brands";
-import UserContextProvider from "./Context/UserContext";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import UserContextProvider from "./Context/UserContext";
+
+
 
 const routes = createBrowserRouter([
   {
@@ -29,7 +31,8 @@ const routes = createBrowserRouter([
   },
 ]);
 
-function App() {
+function App() {  
+  
   return (
     <>
       <UserContextProvider>
