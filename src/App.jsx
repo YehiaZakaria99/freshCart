@@ -19,9 +19,9 @@ const routes = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Register /> },
-      { path: "login", element: <Login />},
+      { index: true, element: localStorage.getItem("userToken") ? <ProtectedRoute><Home /></ProtectedRoute> : <Register /> },
       { path: "home", element: <ProtectedRoute><Home /></ProtectedRoute> },
+      { path: "login", element: <Login />},
       { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
       { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },

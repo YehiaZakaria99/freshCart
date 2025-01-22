@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="container">
           <div className="box flex justify-between">
             <div className="flex items-center space-x-2">
-              <Link to={userToken ? "home" : ""}>
+              <Link to={ ""}>
                 <img className="w-32" src={freshcartLogo} alt="freshcartLogo" />
               </Link>
               {
