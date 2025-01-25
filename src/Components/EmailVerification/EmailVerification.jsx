@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import VerificationInput from 'react-verification-input';
 import ResetPassword from '../ResetPassword/ResetPassword';
+import { Link } from 'react-router-dom';
 
-export default function EmailVerification({message, email}) {
+export default function EmailVerification({message, email, forgotPassword, values}) {
     const [apiError, setApiError] = useState("");
     const [isValid, setIsValid] = useState(false);
     
+console.log("val",values);
 
     async function setVerification(obj){
       try{
@@ -25,7 +27,8 @@ export default function EmailVerification({message, email}) {
   return (
     <>
        <div className="box px-8 md:w-custom-width w-full mx-auto py-20 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-       {!isValid && <div className="box">
+       {!isValid &&<> 
+        <div className="box">
           <h3 className="text-2xl md:w-custom-width font-bold w-full text-center mx-auto mb-4">
             Email Verification
           </h3>
@@ -51,7 +54,12 @@ export default function EmailVerification({message, email}) {
                 <span className="font-medium">{apiError}</span>
               </div> 
             }
-        </div> }
+        </div> 
+        <div className='md:w-custom-width w-full mx-auto my-5'> 
+                        <button onClick={()=> forgotPassword(values)} className='duration-300 text-blue-600 hover:underline '> Resend code</button>
+        </div>
+        </>
+        }
         {
         isValid &&  <ResetPassword email={email}/> 
       }

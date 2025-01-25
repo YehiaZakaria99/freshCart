@@ -16,9 +16,11 @@ export default function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const [verifyEmail, setVerifyEmail] = useState("");
   const [email, setEmail] = useState("");
+  const [values, setValues] = useState("");
   // let navigate = useNavigate();
 
   async function forgotPassword(values){
+    setValues(values)
 // <VerificationInput validChars="0-9" inputProps={{ inputMode: "numeric" }} />
     console.log(values);
     try{
@@ -74,7 +76,7 @@ export default function ForgotPassword() {
         </div>
       </div>}
       {
-        verifyEmail && <EmailVerification message= {verifyEmail} email={email}/>
+        verifyEmail && <EmailVerification message= {verifyEmail} email={email} forgotPassword={forgotPassword} values = {values}/>
       }
     </>
   )
