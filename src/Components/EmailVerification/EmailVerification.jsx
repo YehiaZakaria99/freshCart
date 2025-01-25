@@ -56,7 +56,8 @@ console.log("val",values);
             }
         </div> 
         <div className='md:w-custom-width w-full mx-auto my-5'> 
-                        <button onClick={()=> forgotPassword(values)} className='duration-300 text-blue-600 hover:underline '> Resend code</button>
+            Didn't get a code ? 
+                        <button onClick={()=> forgotPassword(values)} className='duration-300 text-blue-600 hover:underline '> Resend</button>
         </div>
         </>
         }
