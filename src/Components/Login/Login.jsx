@@ -64,7 +64,7 @@ export default function Login() {
                         :
                         <button type="submit" className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 "  >Login</button>
                       }
-                      <Link className='duration-300 text-blue-600 hover:underline ' to={"/forgotPassword"}>forgotten password ?</Link>
+                      <Link className='duration-300 text-blue-600 hover:underline ' to={"/forgotPassword"}>Forgot password ?</Link>
                     </div>
                       <div className='md:w-custom-width w-full mx-auto my-5'>
                       Don't have an email ? 
