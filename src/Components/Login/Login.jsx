@@ -66,6 +66,10 @@ export default function Login() {
                       }
                       <Link className='duration-300 text-blue-600 hover:underline ' to={"/forgotPassword"}>forgotten password ?</Link>
                     </div>
+                      <div className='md:w-custom-width w-full mx-auto my-5'>
+                      Don't have an email ? 
+                        <Link className='duration-300 text-blue-600 hover:underline ' to={"/register"}> Register</Link>
+                      </div>
                   </form>
                 </div>
               </div>

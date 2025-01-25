@@ -40,6 +40,7 @@ export default function EmailVerification({message, email}) {
                 characterSelected: "character--selected",
                 characterFilled: "character--filled",
               }}
+            length={6}
               onComplete={(code)=> {
                 setVerification({"resetCode": code})
               }}
@@ -52,7 +53,7 @@ export default function EmailVerification({message, email}) {
             }
         </div> }
         {
-        isValid && <ResetPassword email={email}/> 
+        isValid &&  <ResetPassword email={email}/> 
       }
       </div>
       
