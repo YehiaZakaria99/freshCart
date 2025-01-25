@@ -23,7 +23,7 @@ export default function Register() {
         `https://ecommerce.routemisr.com/api/v1/auth/signup`,
         values
       );
-      navigate("home");
+      navigate("/");
       localStorage.setItem("userToken", token);
       setUserToken(token);
     } catch ({
