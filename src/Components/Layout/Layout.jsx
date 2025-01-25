@@ -8,15 +8,15 @@ export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem("userToken")) {
-      // Check if the pathname is the root (i.e., "/")
-      if (location.pathname === "/") {
-        // Redirect to "/home" if the path is "/"
-        navigate("/home", { replace: true });
-      }
-    }
-  }, [location, navigate]); // Only run when location or navigate changes
+  // useEffect(() => {
+  //   if (localStorage.getItem("userToken")) {
+  //     // Check if the pathname is the root (i.e., "/")
+  //     if (location.pathname === "/") {
+  //       // Redirect to "/home" if the path is "/"
+  //       navigate("/home", { replace: true });
+  //     }
+  //   }
+  // }, [location, navigate]); // Only run when location or navigate changes
 
   return (
     <>

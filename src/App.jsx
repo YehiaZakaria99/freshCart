@@ -12,6 +12,9 @@ import Brands from "./Components/Brands/Brands";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import UserContextProvider from "./Context/UserContext";
 import { useEffect, useState } from "react";
+import ProtectedRouteSign from "./Components/ProtectedRouteSign/ProtectedRouteSign";
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
+import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 
 
@@ -20,13 +23,15 @@ const routes = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element:  <Register /> },
-      { path: "/home", element: <ProtectedRoute><Home /></ProtectedRoute> },
-      { path: "/login", element: <Login />},
-      { path: "/products", element: <ProtectedRoute><Products /></ProtectedRoute> },
-      { path: "/categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
-      { path: "/cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
-      { path: "/brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
+      { path: "register", element:  <ProtectedRouteSign><Register /></ProtectedRouteSign>  },
+      { path: "login", element: <ProtectedRouteSign><Login /></ProtectedRouteSign>},
+      { path: "forgotPassword", element: <ProtectedRouteSign><ForgotPassword /></ProtectedRouteSign>},
+      // { path: "resetPassword", element: <ProtectedRouteSign><ResetPassword /></ProtectedRouteSign>},
+      { index: true , element: <ProtectedRoute><Home /></ProtectedRoute> },
+      { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
+      { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
+      { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
+      { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
       { path: "*", element: <Notfound /> },
     ],
   },

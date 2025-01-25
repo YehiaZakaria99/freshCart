@@ -33,10 +33,10 @@ export default function Input({type, id, placeholder, name, formik, error}) {
             error && formik.touched[name]&&
                     <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                       <span className="font-medium">{error}</span>
-                    </div>
+                    </div> 
         }
         {
-            (name == "password" || name == "rePassword") && length &&  
+            type == "password" && length &&  
                 <span className="absolute right-3 top-3 cursor-pointer z-30" onClick={()=>test()}>
 {                    toggleIcon ? 
                     <i className="fa-solid fa-eye-slash text-sm"></i>

@@ -1,15 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './Home.module.css';
 import { userContext } from '../../Context/UserContext';
+import RecentProducts from './../RecentProducts/RecentProducts';
+import axios from 'axios';
 
 export default function Home() {
     
-  let { userToken , setUserToken} = useContext(userContext);
-  // console.log(values);
+
   
   return (
     <>
-      <h2>Home</h2>
+    <RecentProducts/>
     </>
   )
 }

@@ -2,14 +2,13 @@ import React, { useContext, useState } from 'react'
 import styles from './Login.module.css';
 import { useFormik } from 'formik';
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from '../Register/Input/Input';
 import axios from 'axios';
 import { userContext } from '../../Context/UserContext';
 
 
 export default function Login() {
-
 
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +20,7 @@ export default function Login() {
     try{
       setIsLoading(true)
       let {data:{token}} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signin` , values)
-      navigate("/home");
+      navigate("/");
       localStorage.setItem("userToken", token);
       setUserToken(token);
     } catch({response:{data:{message}}}){
@@ -58,13 +57,14 @@ export default function Login() {
                     }
                     <Input formik={formik} type="email" id="email" placeholder="email:" name="email" error= {formik.errors.email}/>
                     <Input formik={formik} type="password" id="password" placeholder="password:" name="password" error= {formik.errors.password}/>
-                    <div className="submit-btn md:w-custom-width w-full mx-auto text-end">
+                    <div className="md:w-custom-width w-full mx-auto flex justify-between items-center">
                       {
                         isLoading ? 
                         <button type="submit" className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 " disabled><i className="fas fa-spinner fa-spin"></i></button>
                         :
                         <button type="submit" className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 "  >Login</button>
                       }
+                      <Link className='duration-300 text-blue-600 hover:underline ' to={"/forgotPassword"}>forgotten password ?</Link>
                     </div>
                   </form>
                 </div>

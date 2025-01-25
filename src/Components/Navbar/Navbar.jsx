@@ -30,7 +30,7 @@ export default function Navbar() {
               {
                 userToken && 
               <div className="links text-gray-500 hidden lg:flex space-x-2">
-                <NavLink to={"home"}>Home  </NavLink>
+                <NavLink to={""}>Home  </NavLink>
                 <NavLink to={"cart"}>Cart</NavLink>
                 <NavLink to={"products"}>Products</NavLink>
                 <NavLink to={"categories"}>Categories</NavLink>
@@ -78,7 +78,7 @@ export default function Navbar() {
                   :
                   <>
                     <NavLink to={"login"}>Login</NavLink>
-                    <NavLink to={""}>Register</NavLink>
+                    <NavLink to={"register"}>Register</NavLink>
                   </>
                 }
                     </div>
@@ -89,7 +89,7 @@ export default function Navbar() {
                   :
                   <>
                     <NavLink to={"login"}>Login</NavLink>
-                    <NavLink to={""}>Register</NavLink>
+                    <NavLink to={"register"}>Register</NavLink>
                   </>
                 }
               </div>
