@@ -16,6 +16,8 @@ import ProtectedRouteSign from "./Components/ProtectedRouteSign/ProtectedRouteSi
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import ResetPassword from './Components/ResetPassword/ResetPassword';
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import CartContextProvider from "./Context/CartContext";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -42,9 +44,12 @@ function App() {
   
   return (
     <>
+    <CartContextProvider>
       <UserContextProvider>
         <RouterProvider router={routes} />
+        <Toaster />
       </UserContextProvider>
+    </CartContextProvider>
     </>
   );
 }
