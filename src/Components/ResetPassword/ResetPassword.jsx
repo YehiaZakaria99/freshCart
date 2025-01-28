@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { userContext } from "../../Context/UserContext";
 
 export default function ResetPassword({email}) {
-// const [isValid, setIsValid] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
 
 let {setUserToken} = useContext(userContext);
 let navigate = useNavigate();
@@ -56,7 +56,12 @@ const formik = useFormik({
             <Input formik={formik} type="password" id="newPassword" placeholder="newPassword" name="newPassword" error= {formik.errors.newPassword}/>
             <Input formik={formik} type="password" id="rePassword" placeholder="confirmPassword:" name="rePassword" error= {formik.errors.rePassword}/>
             <div className="md:w-custom-width w-full mx-auto flex justify-between items-center">
-                <button type="submit" className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 ">Reset</button>
+            {
+              isLoading ? 
+              <button type="submit" className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 " disabled><i className="fas fa-spinner fa-spin"></i></button>
+              :
+              <button type="submit" className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 ">Reset</button>
+            }
             </div>
           </form>
         </div>

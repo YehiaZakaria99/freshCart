@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Input({type, id, placeholder, name, formik, error}) {
+export default function Input({type, id, placeholder, name, formik, error, noArrows}) {
     const [length, setLength] = useState(false);
     const [toggleIcon, setToggleIcon] = useState(true);
     
@@ -12,7 +12,7 @@ export default function Input({type, id, placeholder, name, formik, error}) {
     <>
       <div className="name relative md:w-custom-width w-full mx-auto mb-5 group z-0">
         <input
-          className="text-sm block py-2.5 z-20 bg-transparent border-b-2 w-full relative autofill:bg-red-600 border-gray-400 shadow-main duration-300 focus:border-main outline-none peer"
+          className={`text-sm block py-2.5 z-20 bg-transparent border-b-2 w-full relative autofill:bg-red-600 border-gray-400 shadow-main duration-300 focus:border-main outline-none peer ${type==="number" && noArrows}`}
           id={id}
           type={!toggleIcon ? "text" : type}
           name={name}

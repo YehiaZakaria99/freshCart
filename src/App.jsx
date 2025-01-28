@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import ProtectedRouteSign from "./Components/ProtectedRouteSign/ProtectedRouteSign";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import ResetPassword from './Components/ResetPassword/ResetPassword';
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
 
 
 
@@ -25,13 +26,13 @@ const routes = createBrowserRouter([
     children: [
       { path: "register", element:  <ProtectedRouteSign><Register /></ProtectedRouteSign>  },
       { path: "login", element: <ProtectedRouteSign><Login /></ProtectedRouteSign>},
-      { path: "forgotPassword", element: <ProtectedRouteSign><ForgotPassword /></ProtectedRouteSign>},
-      // { path: "resetPassword", element: <ProtectedRouteSign><ResetPassword /></ProtectedRouteSign>},
       { index: true , element: <ProtectedRoute><Home /></ProtectedRoute> },
+      { path: "forgotPassword", element: <ProtectedRouteSign><ForgotPassword /></ProtectedRouteSign>},
       { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
       { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
       { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
+      { path: "productdetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "*", element: <Notfound /> },
     ],
   },

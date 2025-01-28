@@ -17,7 +17,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.2",
+    "react-slick": "^0.30.3",
+    "react-spinners": "^0.15.0",
     "react-verification-input": "^4.2.0",
+    "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.15.10",
     "yup": "^1.6.1"
   },

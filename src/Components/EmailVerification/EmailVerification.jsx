@@ -52,7 +52,7 @@ export default function EmailVerification({message, email, forgotPassword, value
           <p className=" md:w-custom-width w-full font-bold text-center  mx-auto mb-8 text-red-900">{message}</p>
 
             <form onSubmit={formik.handleSubmit}>
-                <Input formik={formik} type="number" id="resetCode" placeholder="resetCode:" name="resetCode" error= {formik.errors.resetCode}/>
+                <Input noArrows={"no-arrows"} formik={formik} type="number" id="resetCode" placeholder="resetCode:" name="resetCode" error= {formik.errors.resetCode}/>
                 <div className="submit-btn md:w-custom-width w-full mx-auto text-start mb-4">
               {isLoading ? (
                 <button
