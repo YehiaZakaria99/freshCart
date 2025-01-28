@@ -8,7 +8,7 @@ export default function RecentProducts() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  let { addProductToCart, cart, isAdded } = useContext(CartContext);
+  const { addProductToCart } = useContext(CartContext);
 
   async function getProducts() {
     setIsLoading(true);
