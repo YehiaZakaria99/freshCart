@@ -10,7 +10,7 @@ export default function ProductDetails() {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  var settings = {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,

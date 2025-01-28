@@ -15,11 +15,11 @@ input:-o-autofill,
 input:-moz-autofill,
 input:-webkit-autofill:focus,
 input:-o-autofill:focus,
-input:-moz-autofill:focus 
+input:-moz-autofill:focus,
+input:autofill,
+input:autofill:focus
 {
   transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
 
-/* input:autofill,
-input:autofill:focus */

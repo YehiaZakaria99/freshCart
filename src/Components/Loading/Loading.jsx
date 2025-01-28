@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Loading.module.css";
-import RingLoader from "react-spinners/RingLoader";
+import HashLoader from "react-spinners/HashLoader";
 
 const override = {
   display: "block",
@@ -11,11 +11,11 @@ const override = {
 export default function Loading() {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-full bg-opacity-5 bg-black flex items-center justify-center">
-        <RingLoader
+      <div className="fixed top-0 left-0 w-full h-full bg-opacity-40 bg-[#222] flex items-center justify-center">
+        <HashLoader
           color={"#0aad0a"}
           cssOverride={override}
-          size={200}
+          size={300}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
