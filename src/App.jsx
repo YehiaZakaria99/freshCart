@@ -18,6 +18,7 @@ import ResetPassword from './Components/ResetPassword/ResetPassword';
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import CartContextProvider from "./Context/CartContext";
 import { Toaster } from "react-hot-toast";
+import CheckOut from "./Components/CheckOut/CheckOut";
 
 
 
@@ -33,6 +34,7 @@ const routes = createBrowserRouter([
       { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
       { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
+      { path: "checkout", element: <ProtectedRoute><CheckOut /></ProtectedRoute> },
       { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
       { path: "productdetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "*", element: <Notfound /> },

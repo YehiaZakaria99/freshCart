@@ -18,9 +18,9 @@ export default function Input({type, id, placeholder, name, formik, error, noArr
           name={name}
           placeholder=""
           autoComplete={name}
-          value={formik.values[name]}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          value={formik?.values[name]}
+          onChange={formik?.handleChange}
+          onBlur={formik?.handleBlur}
           onInput={(e)=> e.target.value ? setLength(true) : setLength(false)}
         />
         <label
@@ -30,7 +30,7 @@ export default function Input({type, id, placeholder, name, formik, error, noArr
           {placeholder}
         </label>
         {
-            error && formik.touched[name]&&
+            error && formik?.touched[name]&&
                     <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                       <span className="font-medium">{error}</span>
                     </div> 

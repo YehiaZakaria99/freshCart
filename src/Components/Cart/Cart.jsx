@@ -2,15 +2,16 @@ import React, { useContext, useState } from "react";
 import styles from "./Cart.module.css";
 import { CartContext } from "../../Context/CartContext";
 import Loading from "../Loading/Loading";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { productsCart, updateCartProductQuantity, deleteProductFromCart} = useContext(CartContext);
-  console.log(productsCart);
+  const { cart, updateCartProductQuantity, deleteProductFromCart} = useContext(CartContext);
+  console.log(cart);
 
 
   return (
     <>
-      {productsCart ? (
+      {cart ? (
         <>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -34,7 +35,7 @@ export default function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {productsCart.data.products.map((item, index) => (
+                {cart.data.products.map((item, index) => (
                   <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="p-4">
                       <img
@@ -102,7 +103,7 @@ export default function Cart() {
                       </div>
                     </td>
                     <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      ${item.price * item.count}
+                      {item.price * item.count} EGP
                     </td>
                     <td className="px-6 py-4">
                       <button
@@ -116,6 +117,10 @@ export default function Cart() {
                 ))}
               </tbody>
             </table>
+            <div className="flex  px-5 py-8 justify-between flex-wrap items-center">
+              <h3 className="text-2xl font-bold">Total Price: <span className="text-xl font-semibold text-main">{cart.data.totalCartPrice} EGP</span></h3>
+              <Link to={"/checkout"} className="text-xl font-semibold bg-main px-3 py-2 text-light rounded-lg">Check Out</Link>
+            </div>
           </div>
         </>
       ) : (

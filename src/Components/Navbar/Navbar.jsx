@@ -7,7 +7,7 @@ import { CartContext } from "../../Context/CartContext";
 
 export default function Navbar() {
   let { userToken, setUserToken } = useContext(userContext);
-  const { productsCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   let navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -30,45 +30,44 @@ export default function Navbar() {
               </NavLink>
               {userToken && (
                 <div className="links text-gray-500 hidden lg:flex space-x-2">
-                  <NavLink to={""}>Home </NavLink>
-                  <NavLink to={"cart"}>Cart</NavLink>
-                  <NavLink to={"products"}>Products</NavLink>
-                  <NavLink to={"categories"}>Categories</NavLink>
-                  <NavLink to={"brands"}>Brands</NavLink>
+                  <NavLink className={"duration-500 hover:text-main"} to={""}>Home </NavLink>
+                  <NavLink className={"duration-500 hover:text-main"} to={"products"}>Products</NavLink>
+                  <NavLink className={"duration-500 hover:text-main"} to={"categories"}>Categories</NavLink>
+                  <NavLink className={"duration-500 hover:text-main"} to={"brands"}>Brands</NavLink>
                 </div>
               )}
             </div>
             <div className="flex items-center space-x-3">
-              <div className={`icons-box hidden lg:flex space-x-2`}>
-                <Link to={"cart"}>
+              <div className={`icons-box hidden lg:flex space-x-2 text-gray-500`}>
+                <NavLink to={"cart"}>
                   <div className="me-3 relative">
-                    <i className="fa-solid fa-cart-shopping text-main"></i>
+                    <i className="fa-solid fa-cart-shopping duration-500 hover:text-main cursor-pointer"></i>
                     <div className="circle absolute -top-2 left-3 bg-main text-light text-sm p-2 w-4 h-4 flex justify-center items-center  rounded-[50%] ">
-                      {productsCart.numOfCartItems}
+                      {cart.numOfCartItems}
                     </div>
                   </div>
-                </Link>
-                <Link target="_blank" to={"https://instagram.com"}>
+                </NavLink>
+                <Link className="duration-300 hover:text-main" target="_blank" to={"https://instagram.com"}>
                   {" "}
                   <i className="fa-brands fa-instagram"></i>{" "}
                 </Link>
-                <Link target="_blank" to={"https://facebook.com"}>
+                <Link className="duration-300 hover:text-main" target="_blank" to={"https://facebook.com"}>
                   {" "}
                   <i className="fa-brands fa-facebook"></i>{" "}
                 </Link>
-                <Link target="_blank" to={"https://tiktok.com"}>
+                <Link className="duration-300 hover:text-main" target="_blank" to={"https://tiktok.com"}>
                   {" "}
                   <i className="fa-brands fa-tiktok"></i>{" "}
                 </Link>
-                <Link target="_blank" to={"https://x.com"}>
+                <Link className="duration-300 hover:text-main" target="_blank" to={"https://x.com"}>
                   {" "}
                   <i className="fa-brands fa-x-twitter"></i>{" "}
                 </Link>
-                <Link target="_blank" to={"https://linkedin.com"}>
+                <Link className="duration-300 hover:text-main" target="_blank" to={"https://linkedin.com"}>
                   {" "}
                   <i className="fa-brands fa-linkedin"></i>{" "}
                 </Link>
-                <Link target="_blank" to={"https://youtube.com"}>
+                <Link className="duration-300 hover:text-main" target="_blank" to={"https://youtube.com"}>
                   {" "}
                   <i className="fa-brands fa-youtube"></i>{" "}
                 </Link>
@@ -97,46 +96,45 @@ export default function Navbar() {
                   </button>
                   {userToken && (
                     <div className="links space-y-3 py-2 text-gray-500 lg-hidden flex flex-col">
-                      <NavLink to={""}>Home</NavLink>
-                      <NavLink to={"cart"}>Cart</NavLink>
-                      <NavLink to={"products"}>Products</NavLink>
-                      <NavLink to={"categories"}>Categories</NavLink>
-                      <NavLink to={"brands"}>Brands</NavLink>
+                      <NavLink className={"duration-500 hover:text-main"} to={""}>Home</NavLink>
+                      <NavLink className={"duration-500 hover:text-main"} to={"products"}>Products</NavLink>
+                      <NavLink className={"duration-500 hover:text-main"} to={"categories"}>Categories</NavLink>
+                      <NavLink className={"duration-500 hover:text-main"} to={"brands"}>Brands</NavLink>
                     </div>
                   )}
                   <div
-                    className={`icons-box lg-hidden flex flex-col space-y-3`}
+                    className={`icons-box lg-hidden flex flex-col space-y-3 text-gray-500`}
                   >
-                    <Link to={"cart"}>
+                    <NavLink to={"cart"}>
                       <div className="relative">
-                        <i className="fa-solid fa-cart-shopping text-main"></i>
+                        <i className="fa-solid fa-cart-shopping duration-500 hover:text-main cursor-pointer"></i>
                         <div className="circle absolute -top-3 left-3 bg-main text-light text-sm p-2 w-4 h-4 flex justify-center items-center  rounded-[50%] ">
-                          {productsCart.numOfCartItems}
+                          {cart.numOfCartItems}
                         </div>
                       </div>
-                    </Link>
+                    </NavLink>
                     <div className="flex space-x-3">
-                      <Link target="_blank" to={"https://instagram.com"}>
+                      <Link className={"duration-500 hover:text-main"} target="_blank" to={"https://instagram.com"}>
                         {" "}
                         <i className="fa-brands fa-instagram"></i>{" "}
                       </Link>
-                      <Link target="_blank" to={"https://facebook.com"}>
+                      <Link className={"duration-500 hover:text-main"} target="_blank" to={"https://facebook.com"}>
                         {" "}
                         <i className="fa-brands fa-facebook"></i>{" "}
                       </Link>
-                      <Link target="_blank" to={"https://tiktok.com"}>
+                      <Link className={"duration-500 hover:text-main"} target="_blank" to={"https://tiktok.com"}>
                         {" "}
                         <i className="fa-brands fa-tiktok"></i>{" "}
                       </Link>
-                      <Link target="_blank" to={"https://x.com"}>
+                      <Link className={"duration-500 hover:text-main"} target="_blank" to={"https://x.com"}>
                         {" "}
                         <i className="fa-brands fa-x-twitter"></i>{" "}
                       </Link>
-                      <Link target="_blank" to={"https://linkedin.com"}>
+                      <Link className={"duration-500 hover:text-main"} target="_blank" to={"https://linkedin.com"}>
                         {" "}
                         <i className="fa-brands fa-linkedin"></i>{" "}
                       </Link>
-                      <Link target="_blank" to={"https://youtube.com"}>
+                      <Link className={"duration-500 hover:text-main"} target="_blank" to={"https://youtube.com"}>
                         {" "}
                         <i className="fa-brands fa-youtube"></i>{" "}
                       </Link>
@@ -144,13 +142,13 @@ export default function Navbar() {
                   </div>
                   <div className="sign-box text-gray-500 lg-hidden space-y-2 flex flex-col">
                     {userToken ? (
-                      <span className="cursor-pointer" onClick={() => logOut()}>
+                      <span className="duration-500 hover:text-main cursor-pointer" onClick={() => logOut()}>
                         Logout
                       </span>
                     ) : (
                       <>
-                        <NavLink to={"login"}>Login</NavLink>
-                        <NavLink to={"register"}>Register</NavLink>
+                        <NavLink className={"duration-500 hover:text-main"} to={"login"}>Login</NavLink>
+                        <NavLink className={"duration-500 hover:text-main"} to={"register"}>Register</NavLink>
                       </>
                     )}
                   </div>
@@ -158,13 +156,13 @@ export default function Navbar() {
               </div>
               <div className="sign-box text-gray-500 hidden lg:flex space-x-2">
                 {userToken ? (
-                  <span className="cursor-pointer" onClick={() => logOut()}>
+                  <span className="duration-500 hover:text-main cursor-pointer" onClick={() => logOut()}>
                     Logout
                   </span>
                 ) : (
                   <>
-                    <NavLink to={"login"}>Login</NavLink>
-                    <NavLink to={"register"}>Register</NavLink>
+                    <NavLink className={"duration-500 hover:text-main"} to={"login"}>Login</NavLink>
+                    <NavLink className={"duration-500 hover:text-main"} to={"register"}>Register</NavLink>
                   </>
                 )}
               </div>
