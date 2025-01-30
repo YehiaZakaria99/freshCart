@@ -6,8 +6,6 @@ import Slider from "react-slick";
 import { useQuery } from "@tanstack/react-query";
 
 export default function CategoriesSlider() {
-  // const [categories, setCategories] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
 
   const settings = {
     dots: false,
