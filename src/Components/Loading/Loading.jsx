@@ -11,7 +11,7 @@ const override = {
 export default function Loading() {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-full bg-opacity-40 bg-[#222] flex items-center justify-center">
+      <div className="">
         <HashLoader
           color={"#0aad0a"}
           cssOverride={override}

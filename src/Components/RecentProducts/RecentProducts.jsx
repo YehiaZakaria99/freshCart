@@ -3,31 +3,46 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { CartContext } from "../../Context/CartContext";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function RecentProducts() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [products, setProducts] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const { addProductToCart } = useContext(CartContext);
 
-  async function getProducts() {
-    setIsLoading(true);
-    try {
-      let {
-        data: { data },
-      } = await axios(`https://ecommerce.routemisr.com/api/v1/products`);
-      setProducts(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(true);
-    }
+  // async function getProducts() {
+  //   setIsLoading(true);
+  //   try {
+  //     let {
+  //       data: { data },
+  //     } = await axios(`https://ecommerce.routemisr.com/api/v1/products`);
+  //     setProducts(data);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsLoading(true);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
+
+  // Access the client
+  function getProducts() {
+    return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // const queryClient = useQueryClient();
 
+  // Queries
+  const {data, isLoading, isFetching} = useQuery({
+    queryKey: ["recentProducts"],
+    queryFn: getProducts,
+  });
+  // console.log(data?.data.data);
+  
   return (
     <>
       {isLoading ? (
@@ -38,7 +53,7 @@ export default function RecentProducts() {
             <div className="box py-3">
               <h2 className="md:text-xl font-bold">Products</h2>
               <section className="products flex flex-wrap gap-y-6 py-8 justify-center">
-                {products.map((product, index) => (
+                {data?.data.data.map((product, index) => (
                   <div
                     className="group w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-3 py-3 rounded-md duration-300 hover:shadow-sm hover:shadow-black hover:scale-105 overflow-hidden "
                     key={index}

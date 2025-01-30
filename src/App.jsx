@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Register from "./Components/Register/Register";
@@ -14,44 +18,116 @@ import UserContextProvider from "./Context/UserContext";
 import { useEffect, useState } from "react";
 import ProtectedRouteSign from "./Components/ProtectedRouteSign/ProtectedRouteSign";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
-import ResetPassword from './Components/ResetPassword/ResetPassword';
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import CartContextProvider from "./Context/CartContext";
 import { Toaster } from "react-hot-toast";
 import CheckOut from "./Components/CheckOut/CheckOut";
-
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      { path: "register", element:  <ProtectedRouteSign><Register /></ProtectedRouteSign>  },
-      { path: "login", element: <ProtectedRouteSign><Login /></ProtectedRouteSign>},
-      { index: true , element: <ProtectedRoute><Home /></ProtectedRoute> },
-      { path: "forgotPassword", element: <ProtectedRouteSign><ForgotPassword /></ProtectedRouteSign>},
-      { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
-      { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
-      { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
-      { path: "checkout", element: <ProtectedRoute><CheckOut /></ProtectedRoute> },
-      { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
-      { path: "productdetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
+      {
+        path: "register",
+        element: (
+          <ProtectedRouteSign>
+            <Register />
+          </ProtectedRouteSign>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <ProtectedRouteSign>
+            <Login />
+          </ProtectedRouteSign>
+        ),
+      },
+      {
+        index: true,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "forgotPassword",
+        element: (
+          <ProtectedRouteSign>
+            <ForgotPassword />
+          </ProtectedRouteSign>
+        ),
+      },
+      {
+        path: "products",
+        element: (
+          <ProtectedRoute>
+            <Products />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "categories",
+        element: (
+          <ProtectedRoute>
+            <Categories />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "cart",
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <ProtectedRoute>
+            <CheckOut />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "brands",
+        element: (
+          <ProtectedRoute>
+            <Brands />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "productdetails/:id",
+        element: (
+          <ProtectedRoute>
+            <ProductDetails />
+          </ProtectedRoute>
+        ),
+      },
       { path: "*", element: <Notfound /> },
     ],
   },
 ]);
 
-function App() {  
-  
+const queryClient = new QueryClient();
+
+function App() {
   return (
     <>
-    <CartContextProvider>
-      <UserContextProvider>
-        <RouterProvider router={routes} />
-        <Toaster />
-      </UserContextProvider>
-    </CartContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <CartContextProvider>
+          <UserContextProvider>
+            <RouterProvider router={routes} />
+            <Toaster />
+          </UserContextProvider>
+        </CartContextProvider>
+      </QueryClientProvider>
     </>
   );
 }

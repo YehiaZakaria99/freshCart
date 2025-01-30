@@ -3,10 +3,11 @@ import styles from "./CategoriesSlider.module.css";
 import axios from "axios";
 import Loading from "../Loading/Loading";
 import Slider from "react-slick";
+import { useQuery } from "@tanstack/react-query";
 
 export default function CategoriesSlider() {
-  const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [categories, setCategories] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const settings = {
     dots: false,
@@ -53,33 +54,41 @@ export default function CategoriesSlider() {
     autoplaySpeed: 3000,
   };
 
-  async function getCategories() {
-    try {
-      setIsLoading(true);
-      let {
-        data: { data },
-      } = await axios(`https://ecommerce.routemisr.com/api/v1/categories`);
-      setCategories(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(true);
-    }
+  // async function getCategories() {
+  //   try {
+  //     setIsLoading(true);
+  //     let {
+  //       data: { data },
+  //     } = await axios(`https://ecommerce.routemisr.com/api/v1/categories`);
+  //     setCategories(data);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsLoading(true);
+  //   }
+  // }
+  function getCategories() {
+    return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
   }
 
-  useEffect(() => {
-    getCategories();
-  }, []);
+  // useEffect(() => {
+  //   getCategories();
+  // }, []);
+  // Queries
+  const {data, isLoading, isFetching} = useQuery({
+    queryKey: ["categoriesSlider"],
+    queryFn: getCategories,
+  });
 
   return (
     <>
-      {isLoading ? <Loading /> :
+      {
         <div className="container">
           <div className="box py-3 space-y-2 border-y-2">
             <h2 className="md:text-xl font-bold">Shop Popular Categories</h2>
             <div className="categories">
               <Slider {...settings}>
-                {categories?.map((category, index) => (
+                {data?.data.data.map((category, index) => (
                   <div key={index} className="">
                     <div className="img">
                       <img className="w-full h-[200px] object-contain sm:object-cover object-top" src={category.image} alt={category.name} />
