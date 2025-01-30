@@ -54,28 +54,12 @@ export default function CategoriesSlider() {
     autoplaySpeed: 3000,
   };
 
-  // async function getCategories() {
-  //   try {
-  //     setIsLoading(true);
-  //     let {
-  //       data: { data },
-  //     } = await axios(`https://ecommerce.routemisr.com/api/v1/categories`);
-  //     setCategories(data);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //     setIsLoading(true);
-  //   }
-  // }
   function getCategories() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
   }
 
-  // useEffect(() => {
-  //   getCategories();
-  // }, []);
   // Queries
-  const {data, isLoading, isFetching} = useQuery({
+  const {data} = useQuery({
     queryKey: ["categoriesSlider"],
     queryFn: getCategories,
   });

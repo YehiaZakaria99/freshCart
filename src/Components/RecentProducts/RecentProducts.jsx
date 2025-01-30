@@ -6,43 +6,22 @@ import { CartContext } from "../../Context/CartContext";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function RecentProducts() {
-  // const [products, setProducts] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
 
   const { addProductToCart } = useContext(CartContext);
 
-  // async function getProducts() {
-  //   setIsLoading(true);
-  //   try {
-  //     let {
-  //       data: { data },
-  //     } = await axios(`https://ecommerce.routemisr.com/api/v1/products`);
-  //     setProducts(data);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //     setIsLoading(true);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
 
   // Access the client
   function getProducts() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
 
-  // const queryClient = useQueryClient();
 
   // Queries
-  const {data, isLoading, isFetching} = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["recentProducts"],
     queryFn: getProducts,
   });
-  // console.log(data?.data.data);
-  
+
   return (
     <>
       {isLoading ? (
