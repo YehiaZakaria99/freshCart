@@ -7,9 +7,9 @@ export let CartContext = createContext();
 export default function CartContextProvider({ children }) {
   const [cart, setCart] = useState(null);
 
-  const headers = {
-    token: localStorage.getItem("userToken"),
-  };
+//   const headers = {
+//     token: localStorage.getItem("userToken"),
+//   };
   // ADD Product To Carts
   async function addProductToCart(productId) {
     try {
@@ -18,7 +18,9 @@ export default function CartContextProvider({ children }) {
         {
           productId,
         },
-        { headers }
+        { headers: {
+            token: localStorage.getItem("userToken"),
+          } }
       );
       getProductsCart();
       toast.success(data?.message);
@@ -33,7 +35,9 @@ export default function CartContextProvider({ children }) {
       let { data } = await axios.get(
         `https://ecommerce.routemisr.com/api/v1/cart`,
         {
-          headers,
+          headers: {
+            token: localStorage.getItem("userToken"),
+          },
         }
       );
       setCart(data);
@@ -53,7 +57,9 @@ export default function CartContextProvider({ children }) {
         {
           count,
         },
-        { headers }
+        { headers: {
+            token: localStorage.getItem("userToken"),
+          } }
       );
       setCart(data);
       toast.success("success");
@@ -68,7 +74,9 @@ export default function CartContextProvider({ children }) {
       let { data } = await axios.delete(
         `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
         {
-          headers,
+          headers: {
+            token: localStorage.getItem("userToken"),
+          },
         }
       );
       setCart(data);
