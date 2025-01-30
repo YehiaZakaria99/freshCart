@@ -1,22 +1,46 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./CheckOut.module.css";
 import Input from "../Register/Input/Input";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useFormik } from "formik";
+import { CartContext } from "./../../Context/CartContext";
+import * as yup from "yup";
 
 export default function CheckOut() {
-  const token = localStorage.getItem("userToken");
-  const headers = {
-    token
-  };
-  const decoded = jwtDecode(token);
-  
-  const [shippingAddress, setShippingAddress] = useState({});
+  const [apiError, setApiError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { cart } = useContext(CartContext);
 
-  function getUserData(values) {
-    setShippingAddress(values);
+  async function handleCheckOut(shippingAddress) {
+    try {
+      setIsLoading(true);
+      let { data } = await axios.post(
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=http://localhost:5173`,
+        {
+          shippingAddress,
+        },
+        {
+          headers: {
+            token: localStorage.getItem("userToken"),
+          },
+        }
+      );
+      setIsLoading(false);
+      console.log(data.session.url);
+      location.href = data.session.url
+    } catch (err) {
+      console.log(err);
+      // setApiError(err.response.data.message);
+      setIsLoading(true);
+    }
   }
+
+  const validationSchema = yup.object({
+    details: yup.string().required("details are required"),
+    phone: yup.string().required("phone is required"),
+    city: yup.string().required("city is required"),
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -24,21 +48,9 @@ export default function CheckOut() {
       phone: "",
       city: "",
     },
-    onSubmit: getUserData,
+    validationSchema,
+    onSubmit: handleCheckOut,
   });
-
-  async function checkOutSession() {
-    let { data } = await axios.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${decoded.id}?url=http://localhost:5173`,
-      {
-        shippingAddress
-      },
-      {
-        headers
-      }
-    );
-    console.log(data);
-  }
 
   return (
     <>
@@ -49,6 +61,7 @@ export default function CheckOut() {
             <form action="" onSubmit={formik.handleSubmit}>
               <Input
                 formik={formik}
+                error={formik.errors.details}
                 id="details"
                 type="text"
                 placeholder=" details"
@@ -56,6 +69,7 @@ export default function CheckOut() {
               />
               <Input
                 formik={formik}
+                error={formik.errors.phone}
                 id="phone"
                 type="tel"
                 placeholder=" phone"
@@ -63,19 +77,29 @@ export default function CheckOut() {
               />
               <Input
                 formik={formik}
+                error={formik.errors.city}
                 id="city"
                 type="text"
                 placeholder=" city"
                 name="city"
               />
               <div className="md:w-custom-width w-full mx-auto text-end">
-                <button
-                  className="bg-main text-light py-1 px-4 rounded-lg font-semibold"
-                  type="submit"
-                  onClick={()=>checkOutSession()}
-                >
-                  Submit
-                </button>
+                {isLoading ? (
+                  <button
+                    type="submit"
+                    className="bg-main text-light py-1 px-2 rounded-md disabled:bg-green-400 "
+                    disabled
+                  >
+                    <i className="fas fa-spinner fa-spin"></i>
+                  </button>
+                ) : (
+                  <button
+                    className="bg-main text-light py-1 px-4 rounded-lg font-semibold"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                )}
               </div>
             </form>
           </div>

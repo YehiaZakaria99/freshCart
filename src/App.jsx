@@ -24,6 +24,7 @@ import CartContextProvider from "./Context/CartContext";
 import { Toaster } from "react-hot-toast";
 import CheckOut from "./Components/CheckOut/CheckOut";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AllOrders from "./Components/AllOrders/AllOrders";
 
 const routes = createBrowserRouter([
   {
@@ -91,6 +92,14 @@ const routes = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CheckOut />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "allorders",
+        element: (
+          <ProtectedRoute>
+            <AllOrders />
           </ProtectedRoute>
         ),
       },

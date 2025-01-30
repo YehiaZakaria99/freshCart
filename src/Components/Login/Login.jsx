@@ -40,7 +40,7 @@ export default function Login() {
           email: "",
           password: "",
         },
-        validationSchema : validationSchema,
+        validationSchema,
         onSubmit: login
       })
 

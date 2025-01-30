@@ -5,14 +5,13 @@ import toast from "react-hot-toast";
 export let CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
-  const [cart, setCart] = useState("");
+  const [cart, setCart] = useState(null);
 
   const headers = {
     token: localStorage.getItem("userToken"),
   };
   // ADD Product To Carts
   async function addProductToCart(productId) {
-    // console.log(productId);
     try {
       let { data } = await axios.post(
         `https://ecommerce.routemisr.com/api/v1/cart`,
