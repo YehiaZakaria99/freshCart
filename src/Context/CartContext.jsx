@@ -21,10 +21,10 @@ export default function CartContextProvider({ children }) {
         { headers }
       );
       getProductsCart();
-      toast.success(data.message);
+      toast.success(data?.message);
     } catch (error) {
       console.log(error);
-      toast.error(data.message);
+      toast.error(data?.message);
     }
   }
   // GET Products
