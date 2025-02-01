@@ -55,6 +55,12 @@ export default function Navbar() {
                   >
                     Brands
                   </NavLink>
+                  <NavLink
+                    className={"duration-500 hover:text-main"}
+                    to={"allorders"}
+                  >
+                    Orders
+                  </NavLink>
                 </div>
               )}
             </div>
