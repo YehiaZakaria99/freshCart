@@ -4,10 +4,12 @@ import freshcartLogo from "../../assets/images/navbar/freshcart-logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { userContext } from "../../Context/UserContext";
 import { CartContext } from "../../Context/CartContext";
+import { wishListContext } from "../../Context/WishListContext";
 
 export default function Navbar() {
   let { userToken, setUserToken } = useContext(userContext);
-  const { cart } = useContext(CartContext);
+  const { cart, setCart  } = useContext(CartContext);
+  const {  setWishListData } = useContext(wishListContext);
 
   let navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +17,8 @@ export default function Navbar() {
     localStorage.removeItem("userToken");
     setUserToken("");
     navigate("login");
+    setCart(null);
+    setWishListData(null)
   }
 
   // console.log(loc.pathname);
@@ -58,7 +62,10 @@ export default function Navbar() {
               <div
                 className={`icons-box hidden lg:flex space-x-2 text-gray-500`}
               >
-                {userToken && (
+                {userToken && (<>
+                  <NavLink to={"wishlist"}>
+                    WishList
+                  </NavLink>
                   <NavLink to={"cart"}>
                     <div className="me-3 relative">
                       <i className="fa-solid fa-cart-shopping duration-500 hover:text-main cursor-pointer"></i>
@@ -67,6 +74,7 @@ export default function Navbar() {
                       </div>
                     </div>
                   </NavLink>
+                  </>
                 )}
                 <Link
                   className="duration-300 hover:text-main"
@@ -170,7 +178,10 @@ export default function Navbar() {
                   <div
                     className={`icons-box lg-hidden flex flex-col space-y-3 text-gray-500`}
                   >
-                    {userToken && (
+                    {userToken && (<>
+                      <NavLink to={"wishlist"}>
+                        WishList
+                      </NavLink>
                       <NavLink to={"cart"}>
                         <div className="relative">
                           <i className="fa-solid fa-cart-shopping duration-500 hover:text-main cursor-pointer"></i>
@@ -179,6 +190,7 @@ export default function Navbar() {
                           </div>
                         </div>
                       </NavLink>
+                      </>
                     )}
                     <div className="flex space-x-3">
                       <Link

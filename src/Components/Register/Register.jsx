@@ -6,11 +6,15 @@ import Input from "./Input/Input";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../../Context/UserContext";
+import { CartContext } from "../../Context/CartContext";
+import { wishListContext } from "../../Context/WishListContext";
 
 export default function Register() {
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   let { setUserToken } = useContext(userContext);
+  let { getProductsCart} = useContext(CartContext);
+  let { getUserWishList} = useContext(wishListContext);
 
   let navigate = useNavigate();
 
@@ -23,8 +27,10 @@ export default function Register() {
         `https://ecommerce.routemisr.com/api/v1/auth/signup`,
         values
       );
-      navigate("/");
       localStorage.setItem("userToken", token);
+      await getProductsCart();
+      await getUserWishList();
+      navigate("/");
       setUserToken(token);
     } catch ({
       response: {
@@ -67,7 +73,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="box md:w-custom-width w-full mx-auto py-20 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 ">
+      <div className="box md:w-custom-width px-10 w-full mx-auto py-20 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 ">
         <h3 className="text-2xl md:w-custom-width w-full mx-auto mb-4">
           Register Now :
         </h3>

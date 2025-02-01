@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from '../Register/Input/Input';
 import axios from 'axios';
 import { userContext } from '../../Context/UserContext';
+import { CartContext } from '../../Context/CartContext';
+import { wishListContext } from '../../Context/WishListContext';
 
 
 export default function Login() {
@@ -13,15 +15,19 @@ export default function Login() {
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   let {setUserToken} = useContext(userContext);
+  let { getProductsCart} = useContext(CartContext);
+  let { getUserWishList} = useContext(wishListContext);
   let navigate = useNavigate();
 
   async function login(values){
 
     try{
       setIsLoading(true)
-      let {data:{token}} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signin` , values)
-      navigate("/");
+      let {data:{token}} = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signin` , values);
       localStorage.setItem("userToken", token);
+      await getProductsCart();
+      await getUserWishList();
+      navigate("/");
       setUserToken(token);
     } catch({response:{data:{message}}}){
       setApiError(message);
@@ -46,7 +52,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="box md:w-custom-width w-full mx-auto py-20 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+      <div className="box md:w-custom-width w-full mx-auto px-10 py-20 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
                 <h3 className="text-2xl md:w-custom-width w-full mx-auto mb-4">Login :</h3>
                 <div className="form ">
                   <form className="" onSubmit={formik.handleSubmit}>

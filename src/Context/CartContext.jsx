@@ -5,11 +5,34 @@ import toast from "react-hot-toast";
 export let CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState("");
 
-//   const headers = {
-//     token: localStorage.getItem("userToken"),
-//   };
+  const getToken = () => localStorage.getItem("userToken");
+  // GET Products
+  async function getProductsCart() {
+    try {
+      let { data } = await axios(
+        `https://ecommerce.routemisr.com/api/v1/cart`,
+        {
+          headers: {
+            token: getToken(),
+          },
+        }
+      );
+      setCart(data);
+    } catch (error) {
+      setCart(null)
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    if (getToken()) {
+      getProductsCart();
+    } else {
+      setCart(null); // Clear cart if no user is logged in
+    }
+  }, [getToken()]);
+
   // ADD Product To Carts
   async function addProductToCart(productId) {
     try {
@@ -18,9 +41,11 @@ export default function CartContextProvider({ children }) {
         {
           productId,
         },
-        { headers: {
-            token: localStorage.getItem("userToken"),
-          } }
+        {
+          headers: {
+            token: getToken(),
+          },
+        }
       );
       getProductsCart();
       toast.success(data?.message);
@@ -29,25 +54,6 @@ export default function CartContextProvider({ children }) {
       toast.error(data?.message);
     }
   }
-  // GET Products
-  async function getProductsCart() {
-    try {
-      let { data } = await axios.get(
-        `https://ecommerce.routemisr.com/api/v1/cart`,
-        {
-          headers: {
-            token: localStorage.getItem("userToken"),
-          },
-        }
-      );
-      setCart(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(() => {
-    getProductsCart();
-  }, []);
 
   // Update Count
   async function updateCartProductQuantity(productId, count) {
@@ -57,9 +63,11 @@ export default function CartContextProvider({ children }) {
         {
           count,
         },
-        { headers: {
-            token: localStorage.getItem("userToken"),
-          } }
+        {
+          headers: {
+            token: getToken(),
+          },
+        }
       );
       setCart(data);
       toast.success("success");
@@ -75,7 +83,7 @@ export default function CartContextProvider({ children }) {
         `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
         {
           headers: {
-            token: localStorage.getItem("userToken"),
+            token: getToken(),
           },
         }
       );
@@ -92,8 +100,10 @@ export default function CartContextProvider({ children }) {
         value={{
           addProductToCart,
           cart,
+          setCart,
           updateCartProductQuantity,
           deleteProductFromCart,
+          getProductsCart
         }}
       >
         {children}

@@ -13,27 +13,11 @@ export default function Cart() {
     <>
       {cart ? (
         <>
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-8">
+            <div className='text-center my-4 py-4 space-y-2'>
+              <h3 className='font-bold text-3xl'>My Cart</h3>
+            </div>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th scope="col" className="px-16 py-3">
-                    <span className="sr-only">Image</span>
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Product
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Qty
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Price
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Action
-                  </th>
-                </tr>
-              </thead>
               <tbody>
                 {cart.data.products.map((item, index) => (
                   <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -110,7 +94,7 @@ export default function Cart() {
                         onClick={()=>deleteProductFromCart(item.product.id)}
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
-                        Remove
+                        <i class="fa-solid fa-trash fa-2x text-red-500"></i>
                       </button>
                     </td>
                   </tr>
@@ -119,7 +103,7 @@ export default function Cart() {
             </table>
             <div className="flex  px-5 py-8 justify-between flex-wrap items-center">
               <h3 className="text-2xl font-bold">Total Price: <span className="text-xl font-semibold text-main">{cart.data.totalCartPrice} EGP</span></h3>
-              <Link to={"/checkout"} className="text-xl font-semibold bg-main px-3 py-2 text-light rounded-lg">Check Out</Link>
+              <Link to={"/checkout"} className="text-sm font-semibold bg-main px-3 py-2 text-light rounded-lg">Check Out</Link>
             </div>
           </div>
         </>
