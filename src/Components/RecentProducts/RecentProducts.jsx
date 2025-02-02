@@ -6,26 +6,31 @@ import { CartContext } from "../../Context/CartContext";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { wishListContext } from "../../Context/WishListContext";
 
-export default function RecentProducts() {
+export default function RecentProducts({ products }) {
   const { addProductToCart } = useContext(CartContext);
   const { wishListData, addProductToWishList, deleteProductFromWishList } =
     useContext(wishListContext);
-  let isFavourite = "";
 
-  // console.log(wishListData);
-
+  const [recentProducts, setRecentProducts] = useState([]);
   // Access the client
-  function getProducts() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
+  async function getProducts() {
+    return await axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
 
   // Queries
-  const { data, isLoading } = useQuery({
+  let { data, isLoading } = useQuery({
     queryKey: ["recentProducts"],
     queryFn: getProducts,
   });
 
-  // console.log(data);
+  useEffect(() => {
+    if (data?.data?.data) {
+      setRecentProducts(data.data.data);
+    }
+    if (products){
+      setRecentProducts(products);
+    }
+  }, [data, products]);
 
   return (
     <>
@@ -33,20 +38,19 @@ export default function RecentProducts() {
         <Loading />
       ) : (
         <>
-          <div className="container">
-            <div className="box py-3">
-              <h2 className="md:text-xl font-bold">Products</h2>
-              <section className="products flex flex-wrap gap-y-6 py-8 justify-center">
-                {data?.data.data.map((product, index) => {
-                  const isFavourite = wishListData?.some(
-                    (item) => item.id === product.id
-                  );
-                  return (
-                    <div
-                      className="relative group w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-3 py-3 rounded-md duration-300 hover:shadow-sm hover:shadow-black hover:scale-105 overflow-hidden "
-                      key={index}
-                    >
-                      <Link to={`productdetails/${product.id}`}>
+          <div className="box py-3 ">
+            <section className="products mx-auto flex flex-wrap gap-y-4 py-8 justify-center">
+              {recentProducts.map((product, index) => {
+                const isFavourite = wishListData?.some(
+                  (item) => item.id === product.id
+                );
+                return (
+                  <div
+                    className="mx-auto relative group min-w-[200px] w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-1"
+                    key={index}
+                  >
+                    <div className="rounded-md duration-300 shadow-[0_0px_2px_rgba(0,0,0,0.25)] hover:shadow-main  hover:scale-105 overflow-hidden px-5 py-2">
+                      <Link to={`/productdetails/${product.id}`}>
                         <img
                           className=""
                           src={product.imageCover}
@@ -55,7 +59,7 @@ export default function RecentProducts() {
                         <h4 className="text-main text-sm">
                           {product.category.name}
                         </h4>
-                        <h3>{product.title.split(" ", 2).join("")}</h3>
+                        <h3>{product.title.split(" ", 2).join(" ")}</h3>
                         <div className="flex justify-between">
                           <p>{product.price} EGP</p>
                           <p>
@@ -75,7 +79,9 @@ export default function RecentProducts() {
                       <div className="absolute right-3 top-3  ">
                         {isFavourite ? (
                           <button
-                            onClick={() => deleteProductFromWishList(product.id)}
+                            onClick={() =>
+                              deleteProductFromWishList(product.id)
+                            }
                           >
                             <i className="opacity-0 duration-500 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 fa-solid fa-heart fa-lg text-red-600"></i>
                           </button>
@@ -88,10 +94,10 @@ export default function RecentProducts() {
                         )}
                       </div>
                     </div>
-                  );
-                })}
-              </section>
-            </div>
+                  </div>
+                );
+              })}
+            </section>
           </div>
         </>
       )}

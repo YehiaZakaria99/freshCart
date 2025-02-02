@@ -3,11 +3,14 @@ import styles from "./Cart.module.css";
 import { CartContext } from "../../Context/CartContext";
 import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Cart() {
   const { cart, updateCartProductQuantity, deleteProductFromCart} = useContext(CartContext);
   console.log(cart);
-
+  // function checkCartLength(){
+    
+  // }
 
   return (
     <>
@@ -94,7 +97,7 @@ export default function Cart() {
                         onClick={()=>deleteProductFromCart(item.product.id)}
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
-                        <i class="fa-solid fa-trash fa-2x text-red-500"></i>
+                        <i className="fa-solid fa-trash fa-2x text-red-500"></i>
                       </button>
                     </td>
                   </tr>
@@ -103,7 +106,9 @@ export default function Cart() {
             </table>
             <div className="flex  px-5 py-8 justify-between flex-wrap items-center">
               <h3 className="text-2xl font-bold">Total Price: <span className="text-xl font-semibold text-main">{cart.data.totalCartPrice} EGP</span></h3>
-              <Link to={"/checkout"} className="text-sm font-semibold bg-main px-3 py-2 text-light rounded-lg">Check Out</Link>
+              <Link to={`${cart.data.products.length ? "/checkout" : "/cart"}`} className="text-sm font-semibold bg-main px-3 py-2 text-light rounded-lg">
+                <button onClick={()=> !cart.data.products.length && toast("Your Cart is Empty", {icon: <i className=" fa-solid fa-circle-exclamation text-red-400"></i>})}>Check Out</button>
+              </Link>
             </div>
           </div>
         </>

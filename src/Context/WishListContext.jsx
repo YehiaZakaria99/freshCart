@@ -37,7 +37,7 @@ export default function WishListContextProvider({ children }) {
           },
         }
       );
-      toast.success("deleted successfully");
+      toast.success("deleted successfully from wishlist");
       getUserWishList();
     } catch (error) {
       console.log(error);
