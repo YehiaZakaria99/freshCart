@@ -12,16 +12,11 @@ export default function Products() {
     return await axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
 
-  const {
-    data,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
   });
 
-  // Filter products based on search query
   const filteredProducts = data?.data?.data.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
