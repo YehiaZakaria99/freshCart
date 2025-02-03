@@ -8,8 +8,8 @@ import { wishListContext } from "../../Context/WishListContext";
 
 export default function Navbar() {
   let { userToken, setUserToken } = useContext(userContext);
-  const { cart, setCart  } = useContext(CartContext);
-  const {  setWishListData } = useContext(wishListContext);
+  const { cart, setCart } = useContext(CartContext);
+  const { setWishListData } = useContext(wishListContext);
 
   let navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ export default function Navbar() {
     setUserToken("");
     navigate("login");
     setCart(null);
-    setWishListData(null)
+    setWishListData(null);
   }
 
   // console.log(loc.pathname);
@@ -27,7 +27,7 @@ export default function Navbar() {
     <>
       <nav className="py-3 bg-gray-200">
         <div className="container">
-          <div className="box flex justify-between">
+          <div className="box flex sm:justify-between flex-wrap items-center gap-y-3 justify-center">
             <div className="flex items-center space-x-2">
               <NavLink to={""}>
                 <img className="w-32" src={freshcartLogo} alt="freshcartLogo" />
@@ -65,72 +65,20 @@ export default function Navbar() {
               )}
             </div>
             <div className="flex items-center space-x-3">
-              <div
-                className={`icons-box hidden lg:flex space-x-2 text-gray-500`}
-              >
-                {userToken && (<>
-                  <NavLink to={"wishlist"}>
-                    WishList
-                  </NavLink>
+              {userToken && (
+                <>
+                  <NavLink className={"text-gray-500 hover:text-main duration-500"} to={"wishlist"}>WishList</NavLink>
                   <NavLink to={"cart"}>
                     <div className="me-3 relative">
-                      <i className="fa-solid fa-cart-shopping duration-500 hover:text-main cursor-pointer"></i>
+                      <i className="fa-solid fa-cart-shopping duration-500 text-gray-500 hover:text-main cursor-pointer"></i>
                       <div className="circle absolute -top-2 left-3 bg-main text-light text-sm p-2 w-4 h-4 flex justify-center items-center  rounded-[50%] ">
                         {cart?.numOfCartItems}
                       </div>
                     </div>
                   </NavLink>
-                  </>
-                )}
-                <Link
-                  className="duration-300 hover:text-main"
-                  target="_blank"
-                  to={"https://instagram.com"}
-                >
-                  {" "}
-                  <i className="fa-brands fa-instagram"></i>{" "}
-                </Link>
-                <Link
-                  className="duration-300 hover:text-main"
-                  target="_blank"
-                  to={"https://facebook.com"}
-                >
-                  {" "}
-                  <i className="fa-brands fa-facebook"></i>{" "}
-                </Link>
-                <Link
-                  className="duration-300 hover:text-main"
-                  target="_blank"
-                  to={"https://tiktok.com"}
-                >
-                  {" "}
-                  <i className="fa-brands fa-tiktok"></i>{" "}
-                </Link>
-                <Link
-                  className="duration-300 hover:text-main"
-                  target="_blank"
-                  to={"https://x.com"}
-                >
-                  {" "}
-                  <i className="fa-brands fa-x-twitter"></i>{" "}
-                </Link>
-                <Link
-                  className="duration-300 hover:text-main"
-                  target="_blank"
-                  to={"https://linkedin.com"}
-                >
-                  {" "}
-                  <i className="fa-brands fa-linkedin"></i>{" "}
-                </Link>
-                <Link
-                  className="duration-300 hover:text-main"
-                  target="_blank"
-                  to={"https://youtube.com"}
-                >
-                  {" "}
-                  <i className="fa-brands fa-youtube"></i>{" "}
-                </Link>
-              </div>
+                </>
+              )}
+              {/* ################### Small Devices ###################  */}
               <div className="toggle-menu relative">
                 <button
                   className="lg:hidden"
@@ -181,13 +129,9 @@ export default function Navbar() {
                       </NavLink>
                     </div>
                   )}
-                  <div
-                    className={`icons-box lg-hidden flex flex-col space-y-3 text-gray-500`}
-                  >
-                    {userToken && (<>
-                      <NavLink to={"wishlist"}>
-                        WishList
-                      </NavLink>
+                  {userToken && (
+                    <>
+                      <NavLink to={"wishlist"}>WishList</NavLink>
                       <NavLink to={"cart"}>
                         <div className="relative">
                           <i className="fa-solid fa-cart-shopping duration-500 hover:text-main cursor-pointer"></i>
@@ -196,59 +140,9 @@ export default function Navbar() {
                           </div>
                         </div>
                       </NavLink>
-                      </>
-                    )}
-                    <div className="flex space-x-3">
-                      <Link
-                        className={"duration-500 hover:text-main"}
-                        target="_blank"
-                        to={"https://instagram.com"}
-                      >
-                        {" "}
-                        <i className="fa-brands fa-instagram"></i>{" "}
-                      </Link>
-                      <Link
-                        className={"duration-500 hover:text-main"}
-                        target="_blank"
-                        to={"https://facebook.com"}
-                      >
-                        {" "}
-                        <i className="fa-brands fa-facebook"></i>{" "}
-                      </Link>
-                      <Link
-                        className={"duration-500 hover:text-main"}
-                        target="_blank"
-                        to={"https://tiktok.com"}
-                      >
-                        {" "}
-                        <i className="fa-brands fa-tiktok"></i>{" "}
-                      </Link>
-                      <Link
-                        className={"duration-500 hover:text-main"}
-                        target="_blank"
-                        to={"https://x.com"}
-                      >
-                        {" "}
-                        <i className="fa-brands fa-x-twitter"></i>{" "}
-                      </Link>
-                      <Link
-                        className={"duration-500 hover:text-main"}
-                        target="_blank"
-                        to={"https://linkedin.com"}
-                      >
-                        {" "}
-                        <i className="fa-brands fa-linkedin"></i>{" "}
-                      </Link>
-                      <Link
-                        className={"duration-500 hover:text-main"}
-                        target="_blank"
-                        to={"https://youtube.com"}
-                      >
-                        {" "}
-                        <i className="fa-brands fa-youtube"></i>{" "}
-                      </Link>
-                    </div>
-                  </div>
+                    </>
+                  )}
+
                   <div className="sign-box text-gray-500 lg-hidden space-y-2 flex flex-col">
                     {userToken ? (
                       <span
@@ -276,6 +170,7 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
+              {/* ################### End Small Devices ###################  */}
               <div className="sign-box text-gray-500 hidden lg:flex space-x-2">
                 {userToken ? (
                   <span
@@ -301,6 +196,11 @@ export default function Navbar() {
                   </>
                 )}
               </div>
+              { userToken &&
+                <div className="settings hidden lg:block">
+                  <button><i className="fa-solid fa-gear align-middle "></i></button>
+                </div>
+              }
             </div>
           </div>
         </div>
@@ -308,3 +208,69 @@ export default function Navbar() {
     </>
   );
 }
+
+/* 
+                    <div
+                    className={`icons-box lg-hidden flex flex-col space-y-3 text-gray-500`}
+                  >
+                    
+                  </div>
+*/
+
+/* 
+
+<div
+                className={`icons-box hidden lg:flex space-x-2 text-gray-500`}
+              >
+                <Link
+                  className="duration-300 hover:text-main"
+                  target="_blank"
+                  to={"https://instagram.com"}
+                >
+                  {" "}
+                  <i className="fa-brands fa-instagram"></i>{" "}
+                </Link>
+                <Link
+                  className="duration-300 hover:text-main"
+                  target="_blank"
+                  to={"https://facebook.com"}
+                >
+                  {" "}
+                  <i className="fa-brands fa-facebook"></i>{" "}
+                </Link>
+                <Link
+                  className="duration-300 hover:text-main"
+                  target="_blank"
+                  to={"https://tiktok.com"}
+                >
+                  {" "}
+                  <i className="fa-brands fa-tiktok"></i>{" "}
+                </Link>
+                <Link
+                  className="duration-300 hover:text-main"
+                  target="_blank"
+                  to={"https://x.com"}
+                >
+                  {" "}
+                  <i className="fa-brands fa-x-twitter"></i>{" "}
+                </Link>
+                <Link
+                  className="duration-300 hover:text-main"
+                  target="_blank"
+                  to={"https://linkedin.com"}
+                >
+                  {" "}
+                  <i className="fa-brands fa-linkedin"></i>{" "}
+                </Link>
+                <Link
+                  className="duration-300 hover:text-main"
+                  target="_blank"
+                  to={"https://youtube.com"}
+                >
+                  {" "}
+                  <i className="fa-brands fa-youtube"></i>{" "}
+                </Link>
+              </div>
+
+
+*/

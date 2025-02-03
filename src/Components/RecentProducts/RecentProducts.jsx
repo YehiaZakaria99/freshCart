@@ -27,7 +27,7 @@ export default function RecentProducts({ products }) {
     if (data?.data?.data) {
       setRecentProducts(data.data.data);
     }
-    if (products){
+    if (products) {
       setRecentProducts(products);
     }
   }, [data, products]);

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 export let wishListContext = createContext();
 
 export default function WishListContextProvider({ children }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [wishListData, setWishListData] = useState([]);
   const getToken = () => localStorage.getItem("userToken");
 
@@ -21,9 +22,11 @@ export default function WishListContextProvider({ children }) {
           },
         }
       );
+      
       toast.success(data?.message);
       getUserWishList();
     } catch (error) {
+      // setIsLoading(true);
       console.log(error);
     }
   }
@@ -46,6 +49,7 @@ export default function WishListContextProvider({ children }) {
 
   async function getUserWishList() {
     try {
+      setIsLoading(true);
       let { data } = await axios.get(
         `https://ecommerce.routemisr.com/api/v1/wishlist`,
         {
@@ -54,8 +58,10 @@ export default function WishListContextProvider({ children }) {
           },
         }
       );
+      setIsLoading(false);
       setWishListData(data.data);
     } catch (error) {
+      setIsLoading(true);
       console.log(error);
     }
   }
@@ -69,7 +75,7 @@ export default function WishListContextProvider({ children }) {
 
   return (
     <wishListContext.Provider
-      value={{getUserWishList , wishListData, setWishListData,addProductToWishList, deleteProductFromWishList }}
+      value={{isLoading, getUserWishList , wishListData, setWishListData,addProductToWishList, deleteProductFromWishList }}
     >
       {children}
     </wishListContext.Provider>
