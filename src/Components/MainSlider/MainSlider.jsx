@@ -20,7 +20,7 @@ export default function MainSlider() {
   };
   return (
     <>
-      <div className="container">
+      <div className="container py-10">
         <div className="box flex py-6 ">
           <div className="w-3/4">
             <Slider {...settings}>

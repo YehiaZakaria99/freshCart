@@ -26,7 +26,9 @@ import CheckOut from "./Components/CheckOut/CheckOut";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UserOrders from "./Components/UserOrders/UserOrders";
 import WishListContextProvider from "./Context/WishListContext";
-import WishList from './Components/WishList/WishList';
+import WishList from "./Components/WishList/WishList";
+import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
+import ChangePassword from './Components/ChangePassword/ChangePassword';
 
 const routes = createBrowserRouter([
   {
@@ -129,6 +131,22 @@ const routes = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "updateprofile",
+        element: (
+          <ProtectedRoute>
+            <UpdateProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "changepassword",
+        element: (
+          <ProtectedRoute>
+            <ChangePassword />
+          </ProtectedRoute>
+        ),
+      },
       { path: "*", element: <Notfound /> },
     ],
   },
@@ -139,16 +157,16 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <>
-      <WishListContextProvider>
-        <QueryClientProvider client={queryClient}>
-          <CartContextProvider>
-            <UserContextProvider>
-              <RouterProvider router={routes} />
-              <Toaster />
-            </UserContextProvider>
-          </CartContextProvider>
-        </QueryClientProvider>
-      </WishListContextProvider>
+        <WishListContextProvider>
+          <QueryClientProvider client={queryClient}>
+            <CartContextProvider>
+              <UserContextProvider>
+                <RouterProvider router={routes} />
+                <Toaster />
+              </UserContextProvider>
+            </CartContextProvider>
+          </QueryClientProvider>
+        </WishListContextProvider>
     </>
   );
 }

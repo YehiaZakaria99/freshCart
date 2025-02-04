@@ -41,7 +41,7 @@ export default function UserOrders() {
   return (
     <>
       {userOrders ? (
-        <section className="bg-gray-100">
+        <section className="bg-gray-100 py-20">
           <div className="container mx-auto p-4">
             {/* <h2 className="text-xl my-4">UserOrders</h2> */}
             {/* Header Section */}

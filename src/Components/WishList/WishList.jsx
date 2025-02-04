@@ -11,7 +11,7 @@ export default function WishList() {
     <>
       {!isLoading ? (
         <>
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-10 my-20">
             <div className='text-center my-4 py-4 space-y-2'>
               <p><i className="fa-regular fa-heart fa-4x"></i></p>
               <h3 className='font-bold text-3xl'>My WishList</h3>

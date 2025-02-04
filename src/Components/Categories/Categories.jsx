@@ -36,7 +36,7 @@ export default function Categories() {
   return (
     <>
       {!isLoading ? (
-        <section className="categories">
+        <section className="categories py-20">
           <div className="container">
             <div className="row flex flex-wrap gap-y-6 py-6 justify-center">
               {data?.data?.map((category, index) => (

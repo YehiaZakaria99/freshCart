@@ -10,3 +10,9 @@
 .active{
     color: var(--main-color);
 }
+
+
+.toast{
+    position: relative !important;
+    z-index: 99999999999999 !important;
+}

@@ -5,12 +5,14 @@ import toast from "react-hot-toast";
 export let CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
-  const [cart, setCart] = useState("");
+  const [cart, setCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getToken = () => localStorage.getItem("userToken");
   // GET Products
   async function getProductsCart() {
     try {
+      setIsLoading(true);
       let { data } = await axios(
         `https://ecommerce.routemisr.com/api/v1/cart`,
         {
@@ -19,9 +21,11 @@ export default function CartContextProvider({ children }) {
           },
         }
       );
+      setIsLoading(false);
       setCart(data);
     } catch (error) {
-      setCart(null)
+      setIsLoading(true);
+      setCart(null);
       console.log(error);
     }
   }
@@ -48,10 +52,14 @@ export default function CartContextProvider({ children }) {
         }
       );
       getProductsCart();
-      toast.success(data?.message);
+      toast.success(data?.message, {
+        position: "center",
+      });
     } catch (error) {
       console.log(error);
-      toast.error(data?.message);
+      toast.error(data?.message, {
+        position: "center",
+      });
     }
   }
 
@@ -70,9 +78,13 @@ export default function CartContextProvider({ children }) {
         }
       );
       setCart(data);
-      toast.success("success");
+      toast.success("success", {
+        position: "center",
+      });
     } catch (error) {
-      toast.error("error");
+      toast.error("error", {
+        position: "center",
+      });
     }
   }
 
@@ -88,7 +100,32 @@ export default function CartContextProvider({ children }) {
         }
       );
       setCart(data);
-      toast.success("Product Deleted Successfully");
+      toast.success("Product Deleted Successfully", {
+        position: "center",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Clear Cart
+  async function clearCart() {
+    try {
+      setIsLoading(true);
+      let { data } = await axios.delete(
+        `https://ecommerce.routemisr.com/api/v1/cart`,
+        {
+          headers: {
+            token: getToken(),
+          },
+        }
+      );
+      console.log(data);
+      setIsLoading(false);
+      setCart(data);
+      toast.success("Deleted Successfully", {
+        position: "center",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -103,7 +140,9 @@ export default function CartContextProvider({ children }) {
           setCart,
           updateCartProductQuantity,
           deleteProductFromCart,
-          getProductsCart
+          getProductsCart,
+          clearCart,
+          isLoading
         }}
       >
         {children}
