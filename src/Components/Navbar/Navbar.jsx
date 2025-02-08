@@ -6,6 +6,8 @@ import { userContext } from "../../Context/UserContext";
 import { CartContext } from "../../Context/CartContext";
 import { wishListContext } from "../../Context/WishListContext";
 import { jwtDecode } from "jwt-decode";
+import logOut from "../Logout/logout";
+
 
 export default function Navbar() {
   let { userToken, setUserToken } = useContext(userContext);
@@ -36,14 +38,14 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  function logOut() {
-    localStorage.removeItem("userToken");
-    setUserToken("");
-    setUserIcon(false);
-    navigate("login");
-    setCart(null);
-    setWishListData(null);
-  }
+  // function logOut() {
+  //   localStorage.removeItem("userToken");
+  //   setUserToken("");
+  //   setUserIcon(false);
+  //   navigate("login");
+  //   setCart(null);
+  //   setWishListData(null);
+  // }
 
   useEffect(() => {
     if (userToken) {
@@ -181,7 +183,7 @@ export default function Navbar() {
                     {userToken ? (
                       <span
                         className="duration-500 hover:text-main cursor-pointer"
-                        onClick={() => logOut()}
+                        onClick={() => logOut(navigate, setUserToken, setUserIcon, setCart, setWishListData)}
                       >
                         Logout
                       </span>
@@ -253,11 +255,11 @@ export default function Navbar() {
                         className="py-2 text-sm text-gray-800 font-semibold dark:text-gray-200 space-y-3"
                         aria-labelledby="dropdownBottomButton"
                       >
-                        {/* <li className="px-4 duration-500 hover:text-main cursor-pointer">
+                        <li className="px-4 duration-500 hover:text-main cursor-pointer">
                           <p className="text-lg text-center font-bold">
                             {decoded.name}
                           </p>
-                        </li> */}
+                        </li>
                         <li className="px-4 duration-500 hover:text-main cursor-pointer">
                           <NavLink
                             onClick={() => setUserIcon(false)}
@@ -269,9 +271,9 @@ export default function Navbar() {
                         <li className="px-4 duration-500 hover:text-main cursor-pointer">
                           <NavLink
                             onClick={() => setUserIcon(false)}
-                            to={"/updateaddress"}
+                            to={"/userAddresses"}
                           >
-                            Update Address
+                            Your Addresses
                           </NavLink>
                         </li>
                         <li className="px-4 duration-500 hover:text-main cursor-pointer">
@@ -284,7 +286,7 @@ export default function Navbar() {
                         </li>
                         <li
                           className="px-4 duration-500 hover:text-main cursor-pointer"
-                          onClick={() => logOut()}
+                          onClick={() => logOut(navigate, setUserToken, setUserIcon, setCart, setWishListData)}
                         >
                           Logout
                         </li>

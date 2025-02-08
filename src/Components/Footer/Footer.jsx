@@ -12,7 +12,7 @@ export default function Footer() {
     
   return (
     <>
-      <footer className="py-3 bg-gray-200 w-full relative z-[99]">
+      <footer className="py-3 bg-gray-200 w-full ">
         <div className="container">
           <div className="box space-y-3">
             <h3 className='text-2xl '>Get the FreshCart app</h3>

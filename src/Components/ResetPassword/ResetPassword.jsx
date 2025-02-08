@@ -20,11 +20,7 @@ async function setNewPassword({newPassword}){
   console.log(obj);
   try{
     let {data:{token}} = await axios.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`, obj);
-    console.log(token);
-    navigate("/");
-    setUserToken(token);
-    localStorage.setItem("userToken", token);
-    setIsValid(true);
+    navigate("/login");
   } catch({response:{data:{message}}}){
     console.log(message);
     setApiError(message);

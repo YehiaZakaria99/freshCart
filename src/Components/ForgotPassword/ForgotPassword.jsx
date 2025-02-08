@@ -16,7 +16,6 @@ export default function ForgotPassword() {
   const [verifyEmail, setVerifyEmail] = useState("");
   const [email, setEmail] = useState("");
   const [values, setValues] = useState("");
-  // let navigate = useNavigate();
 
   async function forgotPassword(values) {
     setValues(values);
@@ -30,9 +29,7 @@ export default function ForgotPassword() {
         `https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords`,
         values
       );
-      // console.log(values.email);
       setEmail(values.email);
-      // console.log(message);
       setVerifyEmail(message);
       setIsLoading(false);
     } catch ({

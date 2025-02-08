@@ -29,6 +29,7 @@ import WishListContextProvider from "./Context/WishListContext";
 import WishList from "./Components/WishList/WishList";
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
+import UserAddresses from "./Components/UserAddresses/UserAddresses";
 
 const routes = createBrowserRouter([
   {
@@ -136,6 +137,14 @@ const routes = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <UpdateProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "userAddresses",
+        element: (
+          <ProtectedRoute>
+            <UserAddresses />
           </ProtectedRoute>
         ),
       },

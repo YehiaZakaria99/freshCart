@@ -7,8 +7,8 @@ import BrandDetails from "../BrandDetails/BrandDetails";
 
 export default function Brands() {
   const [brandId, setBrandId] = useState("");
-  // const [categoryName, setCategoryName] = useState("");
   const [isClosed, setIsClosed] = useState(false);
+  // const [categoryName, setCategoryName] = useState("");
   async function getBrands() {
     let response = await axios(
       `https://ecommerce.routemisr.com/api/v1/brands/?limit=50`

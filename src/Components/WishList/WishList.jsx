@@ -9,7 +9,7 @@ export default function WishList() {
     const { addProductToCart} = useContext(CartContext)
   return (
     <>
-      {!isLoading ? (
+      {/* {!isLoading ? ( */}
         <>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-10 my-20">
             <div className='text-center my-4 py-4 space-y-2'>
@@ -50,9 +50,9 @@ export default function WishList() {
             </table>
           </div>
         </>
-      ) : (
+      {/* ) : (
         <Loading />
-      )}
+      )} */}
     </>
   );
 }

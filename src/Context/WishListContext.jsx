@@ -23,10 +23,11 @@ export default function WishListContextProvider({ children }) {
         }
       );
       
-      toast.success(data?.message);
+      toast.success(data?.message,{
+        position: 'center'
+      });
       getUserWishList();
     } catch (error) {
-      // setIsLoading(true);
       console.log(error);
     }
   }
@@ -40,7 +41,9 @@ export default function WishListContextProvider({ children }) {
           },
         }
       );
-      toast.success("deleted successfully from wishlist");
+      toast.success("deleted successfully from wishlist",{
+        position: 'center'
+      });
       getUserWishList();
     } catch (error) {
       console.log(error);
@@ -49,7 +52,7 @@ export default function WishListContextProvider({ children }) {
 
   async function getUserWishList() {
     try {
-      setIsLoading(true);
+      // setIsLoading(true);
       let { data } = await axios.get(
         `https://ecommerce.routemisr.com/api/v1/wishlist`,
         {
@@ -58,10 +61,10 @@ export default function WishListContextProvider({ children }) {
           },
         }
       );
-      setIsLoading(false);
+      // setIsLoading(false);
       setWishListData(data.data);
     } catch (error) {
-      setIsLoading(true);
+      // setIsLoading(true);
       console.log(error);
     }
   }

@@ -6,11 +6,20 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Input from "../Register/Input/Input";
 import { userContext } from "../../Context/UserContext";
+import { useNavigate } from "react-router-dom";
+import logOut from "../Logout/logout";
+import { CartContext } from "../../Context/CartContext";
+import { wishListContext } from "../../Context/WishListContext";
 
 export default function ChangePassword() {
+  // navigate, setUserToken, setUserIcon, setCart, setWishListData
+  let navigate = useNavigate();
+  let { userToken, setUserToken } = useContext(userContext);
+  const [userIcon, setUserIcon] = useState(false);
+  const { setCart } = useContext(CartContext);
+  const { setWishListData } = useContext(wishListContext);
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  let { userToken, setUserToken } = useContext(userContext);
 
   async function changePassword(values) {
     try {
@@ -24,13 +33,12 @@ export default function ChangePassword() {
           },
         }
       );
-      localStorage.setItem("userToken", data.token);
-      setUserToken(data.token);
       setIsLoading(false);
       toast.success("Password Updated Successfully", {
         position: "center",
       });
       setApiError("");
+      logOut(navigate, setUserToken, setUserIcon, setCart, setWishListData)
       console.log(data);
     } catch (error) {
       setApiError(error.response.data.errors.msg || "Something went wrong");

@@ -6,11 +6,19 @@ import { userContext } from "../../Context/UserContext";
 import axios from "axios";
 import Input from "../Register/Input/Input";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
+import { wishListContext } from "../../Context/WishListContext";
+import logOut from "../Logout/logout";
 
 export default function UpdateProfile() {
+  let navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // let { setUserToken } = useContext(userContext);
+  let {  setUserToken } = useContext(userContext);
+  const [userIcon, setUserIcon] = useState(false);
+  const { setCart } = useContext(CartContext);
+  const { setWishListData } = useContext(wishListContext);
 
   async function updateProfile(values) {
     try {
@@ -33,8 +41,7 @@ export default function UpdateProfile() {
         position: "center",
       });
       setApiError("");
-      console.log(email);
-      setUserEmail(email);
+      logOut(navigate, setUserToken, setUserIcon, setCart, setWishListData);
     } catch (error) {
       setApiError(error.response.data.errors.msg);
       setIsLoading(false);
