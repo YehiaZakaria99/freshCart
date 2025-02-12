@@ -7,7 +7,7 @@ import BrandDetails from "../BrandDetails/BrandDetails";
 
 export default function Brands() {
   const [brandId, setBrandId] = useState("");
-  const [isClosed, setIsClosed] = useState(false);
+  const [isClosed, setIsClosed] = useState(true);
   // const [categoryName, setCategoryName] = useState("");
   async function getBrands() {
     let response = await axios(
@@ -23,12 +23,12 @@ export default function Brands() {
   // Handle category click
   function getBrandId(brandId) {
     setBrandId(brandId); // Update category ID
-    setIsClosed(true); // Open the modal
+    setIsClosed(false); // Open the modal
   }
 
   // Handle modal close
   function handleClose() {
-    setIsClosed(false);
+    setIsClosed(true);
     setCategoryId(""); // Reset category ID when closing
   }
 
@@ -45,7 +45,7 @@ export default function Brands() {
                 >
                   <div className="px-4">
                     <div
-                      onClick={() => getBrandId(brand._id, brand.name)}
+                      onClick={() => getBrandId(brand._id)}
                       className="block w-full shadow-[0_0_4px_rgba(0,0,0,0.25)] group rounded-md duration-500 overflow-hidden hover:shadow-main"
                     >
                       <div className="img overflow-hidden h-[300px]">
@@ -66,6 +66,7 @@ export default function Brands() {
           </div>
           {/* ############################################ MODAL ############################################ */}
           {
+            !isClosed &&
             <BrandDetails
               isClosed={isClosed}
               setIsClosed={handleClose}

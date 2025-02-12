@@ -3,16 +3,16 @@ import { createContext, useEffect, useState } from "react";
 export let userContext = createContext();
 
 export default function UserContextProvider({ children }) {
-  const [userToken, setUserToken] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
+  const [userToken, setUserToken] = useState(null);
 
   useEffect(() => {
-    localStorage.getItem("userToken") &&
-    setUserToken(localStorage.getItem("userToken"));
-    if(userToken){
-      setUserToken(userToken);    
+    const token = localStorage.getItem("userToken");
+    if (token) {
+      setUserToken(token);
     }
-  }, [userToken]);
+  }, []);
+
   return (
     <userContext.Provider
       value={{ userToken, setUserToken, userEmail, setUserEmail }}
@@ -21,7 +21,3 @@ export default function UserContextProvider({ children }) {
     </userContext.Provider>
   );
 }
-
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTAzMjBjNGUzZjIyNTRkNjdlZmM4YyIsImlhdCI6MTczODY4ODAyOSwiZXhwIjoxNzQ2NDY0MDI5fQ.TGpEcMtDRpNPUnPEZzw71h7RCqGZJbpmtqQcFKwuxpM
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTAzMjBjNGUzZjIyNTRkNjdlZmM4YyIsImlhdCI6MTczODY4ODMxNSwiZXhwIjoxNzQ2NDY0MzE1fQ.2qSfiza8gsmqJEKeBD-D9YnTYmZha1zTNLmUrLS5--I

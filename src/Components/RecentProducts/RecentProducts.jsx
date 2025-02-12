@@ -41,7 +41,7 @@ export default function RecentProducts({ products }) {
           <div className="box py-3 ">
             <section className="products mx-auto flex flex-wrap gap-y-4 py-8 justify-center">
               {recentProducts.map((product, index) => {
-                const isFavourite = wishListData?.some(
+                const isFavourite = wishListData?.data?.some(
                   (item) => item.id === product.id
                 );
                 return (

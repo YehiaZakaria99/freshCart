@@ -62,7 +62,7 @@ export default function WishListContextProvider({ children }) {
         }
       );
       // setIsLoading(false);
-      setWishListData(data.data);
+      setWishListData(data);
     } catch (error) {
       // setIsLoading(true);
       console.log(error);

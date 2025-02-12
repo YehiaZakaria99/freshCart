@@ -12,15 +12,15 @@ export default function Footer() {
     
   return (
     <>
-      <footer className="py-3 bg-gray-200 w-full ">
-        <div className="container">
+      <footer className="py-3 bg-blue-100 shadow-[0_0_3px] shadow-blue-950 w-full ">
+        <div className="container text-blue-950">
           <div className="box space-y-3">
             <h3 className='text-2xl '>Get the FreshCart app</h3>
             <p className='text-gray-500'>We will send you a link, open it on your phone to download the app.</p>
             <div className="">
               <div className="form flex flex-col space-y-4  space-x-0 md:flex-row md:space-x-4 md:space-y-0 px-4">
                 <input className='flex-1 border-0 outline-none px-3 py-1 rounded-md shadow' type="email" name="email" id="footerEmail" placeholder='Email ..' />
-                <button className='bg-green-600 text-white font-thin px-7 rounded-md'>Share App Link</button>
+                <button className='bg-main text-white font-thin px-7 rounded-md'>Share App Link</button>
               </div>
               <div className='flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between md:items-center border-y-2 border-gray-300 py-5  my-3'>
                 <div className="payment flex flex-wrap md:flex-nowrap items-center justify-center space-x-2 px-4 ">

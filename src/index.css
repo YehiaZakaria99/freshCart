@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --main-color: #0aad0a;
-    --sec-color: #f0f3f2;
+:root {
+  --main-color: #0aad0a;
+  --sec-color: #f0f3f2;
 }
 
-.active{
-    color: var(--main-color);
+.active {
+  color: var(--main-color);
 }
 
-
-.toast{
-    position: relative !important;
-    z-index: 99999999999999 !important;
+.toast {
+  position: relative !important;
+  z-index: 99999999999999 !important;
 }
+

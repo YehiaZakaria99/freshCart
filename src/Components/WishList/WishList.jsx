@@ -18,7 +18,7 @@ export default function WishList() {
             </div>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <tbody>
-                {wishListData.map((item, index) => (
+                {wishListData?.data?.map((item, index) => (
                   <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="p-4">
                       <img
