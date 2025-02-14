@@ -57,6 +57,7 @@ export default function Login() {
 
   return (
     <>
+    <div className="container">
       <div className="h-screen flex justify-center items-center">
         <div className="box md:w-custom-width w-full">
           <h3 className="text-2xl md:w-custom-width w-full mx-auto mb-4">
@@ -115,10 +116,10 @@ export default function Login() {
               <div className="md:w-custom-width w-full mx-auto my-5">
                 Don't have an email ?
                 <Link
-                  className="duration-300 text-blue-600 hover:underline "
+                  className="duration-300 ms-1 text-blue-600 hover:underline "
                   to={"/register"}
                 >
-                  {" "}
+                  {""}
                   Register
                 </Link>
               </div>
@@ -126,6 +127,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 }

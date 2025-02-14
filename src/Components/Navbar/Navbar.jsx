@@ -96,17 +96,17 @@ export default function Navbar() {
                 />
               </div>
               {/* ################### End Small Devices ###################  */}
-              <div className="sign-box text-gray-800 hidden lg:flex space-x-2">
+              <div className="sign-box hidden lg:flex space-x-2">
                 {!userToken && (
                   <>
                     <NavLink
-                      className={"duration-500 hover:text-main"}
+                      className={"duration-500 hover:text-main text-white"}
                       to={"login"}
                     >
                       Login
                     </NavLink>
                     <NavLink
-                      className={"duration-500 hover:text-main"}
+                      className={"duration-500 hover:text-main text-white"}
                       to={"register"}
                     >
                       Register

@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import AddAddress from "../Brands/AddAddress/AddAddress";
 import toast from "react-hot-toast";
+import { userContext } from "../../Context/UserContext";
 
 export default function UserAddresses() {
   const [addresses, setAddresses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingAddressId, setLoadingAddressId] = useState(null);
   const [isClosed, setIsClosed] = useState(true);
+  const {userToken} = useContext(userContext)
 
 
   async function getAddresses() {

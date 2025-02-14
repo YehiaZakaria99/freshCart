@@ -24,21 +24,21 @@ export default function DropDown({
         <>
           {/* Menu Toggle Button */}
           <MenuButton className="w-full justify-center rounded-md px-3 py-2 text-sm font-semibold ">
-            <i className="fa-solid fa-bars text-main text-2xl"></i>
+            <i className="fa-solid fa-bars text-white duration-500 hover:text-main text-2xl"></i>
           </MenuButton>
 
           {/* Menu Content */}
           <Transition
-            enter="transition duration-500 ease-out"
+            enter="transition duration-200 ease-out"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
-            leave="transition duration-500 ease-in"
+            leave="transition duration-200 ease-in"
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
             <MenuItems
               modal={false}
-              className="absolute duration-500 left-0 z-10 w-full rounded-md bg-[#222] shadow-lg focus:outline-none"
+              className="absolute  left-0 z-10 w-full rounded-md bg-[#222] shadow-lg focus:outline-none"
             >
               <div className="py-2 duration-500">
                 {/* User Section */}
@@ -224,7 +224,7 @@ export default function DropDown({
                         <NavLink
                           to="/login"
                           onClick={close}
-                          className="block font-bold text-blue-950 hover:text-main duration-500 px-4 py-2 text-sm"
+                          className="block font-bold hover:text-main text-white duration-500 px-4 py-2 text-sm"
                         >
                           Login
                         </NavLink>
@@ -233,7 +233,7 @@ export default function DropDown({
                         <NavLink
                           to="/register"
                           onClick={close}
-                          className="block font-bold text-blue-950 hover:text-main duration-500 px-4 py-2 text-sm"
+                          className="block font-bold hover:text-main text-white duration-500 px-4 py-2 text-sm"
                         >
                           Register
                         </NavLink>

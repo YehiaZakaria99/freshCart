@@ -112,7 +112,7 @@ export default function AddAddress({ setAddresses, setIsClosed }) {
                   ) : (
                     <button
                       type="submit"
-                      className="text-white duration-500 me-3 bg-main rounded-md text-md px-4 py-1  inline-flex justify-center items-center"
+                      className="text-white duration-500 me-3 bg-green-700 rounded-md text-md px-4 py-1  inline-flex justify-center items-center"
                       data-modal-hide="default-modal"
                     >
                       ADD
