@@ -23,7 +23,7 @@ export default function Products() {
 
   return (
     <>
-      <section className="products">
+      <section className="products py-24">
         <div className="container">
           <div className="box py-6 md:w-4/5 w-full mx-auto">
             <div className="input-box md:w-4/5 w-full mx-auto ">
