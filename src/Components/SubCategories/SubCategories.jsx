@@ -42,16 +42,16 @@ export default function SubCategories({ isClosed, setIsClosed, id, categoryName}
       >
         <div className="relative p-4 w-full max-w-2xl max-h-full">
           {/* Modal content */}
-          <div className="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+          <div className="relative text-white bg-[#222] shadow-[0_2px_8px_rgba(0,0,0,0.1)] rounded-lg ">
             {/* Modal header */}
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-              <h3 className="text-xl font-semibold text-main dark:text-white">
+            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
+              <h3 className="text-xl font-bold  ">
                 {categoryName}
               </h3>
               <button
                 onClick={() => setIsClosed()}
                 type="button"
-                className="text-gray-400 duration-500 bg-transparent  hover:text-main rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="text-white duration-500 bg-transparent  hover:text-main rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                 data-modal-hide="default-modal"
               >
                 <svg
@@ -75,7 +75,7 @@ export default function SubCategories({ isClosed, setIsClosed, id, categoryName}
             {/* Modal body */}
             <div className="p-4 md:p-5 space-y-8">
               {isLoading ? <Loading /> : data?.data.map((subCategory, index) => (
-                <p key={index} className="text-xl hover:text-main duration-500 leading-relaxed text-gray-500 dark:text-gray-400">
+                <p key={index} className="text-lg hover:text-main duration-500 leading-relaxed ">
                   {subCategory.name}
                 </p>
               ))}

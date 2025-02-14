@@ -12,8 +12,8 @@ export default function Footer() {
     
   return (
     <>
-      <footer className="py-3 bg-blue-100 shadow-[0_0_3px] shadow-blue-950 w-full ">
-        <div className="container text-blue-950">
+      <footer className="py-3 bg-[#222] shadow-[0_0_3px] shadow-blue-950 w-full ">
+        <div className="container text-[#fff]">
           <div className="box space-y-3">
             <h3 className='text-2xl '>Get the FreshCart app</h3>
             <p className='text-gray-500'>We will send you a link, open it on your phone to download the app.</p>

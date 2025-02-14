@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       colors: {
-        main: "#0aad0a",
+        main: "#F57C00",
         light: "#f0f3f2",
       },
       width: {

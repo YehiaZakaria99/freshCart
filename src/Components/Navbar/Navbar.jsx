@@ -27,15 +27,14 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="py-5 bg-blue-100  shadow-[0_0_5px] shadow-blue-950 fixed z-[99999] w-full">
+      <nav className="py-5 bg-[#222222]  shadow-[0_0_0px] fixed z-[99999] w-full">
         <div className="container">
           <div className="box flex justify-between flex-wrap items-center gap-y-3 ">
-            <div className="flex items-center space-x-2">
               <NavLink to={""}>
-                <img className="w-32" src={freshcartLogo} alt="freshcartLogo" />
+                <img className="w-32 freshcartLogo" src={freshcartLogo} alt="freshcartLogo" />
               </NavLink>
               {userToken && (
-                <div className="links font-bold text-blue-950 hidden lg:flex space-x-2">
+                <div className="links font-bold text-lg text-white hidden lg:flex space-x-5">
                   <NavLink className={"duration-500 hover:text-main"} to={""}>
                     Home{" "}
                   </NavLink>
@@ -59,25 +58,24 @@ export default function Navbar() {
                   </NavLink>
                 </div>
               )}
-            </div>
             <div className="flex px-1 items-center space-x-1">
               {userToken && (
                 <div className="hidden lg:flex gap-4 px-2  py-2">
                   <NavLink
-                    className={"text-gray-800 hover:text-main duration-500"}
+                    className={"text-[#fff] group hover:text-main duration-500"}
                     to={"wishlist"}
                   >
                     <div className="relative">
                       <i className="fas fa-heart text-lg"></i>
-                      <div className="circle absolute -top-3 left-3 bg-main text-light text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
+                      <div className="circle absolute -top-3 left-3 bg-white text-[#222] duration-500 group-hover:bg-main group-hover:text-white  font-bold text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
                         {wishListData?.count || 0}
                       </div>
                     </div>
                   </NavLink>
-                  <NavLink to={"cart"}>
+                  <NavLink className={"text-[#fff] group hover:text-main duration-500"} to={"cart"}>
                     <div className="relative">
-                      <i className="fa-solid fa-cart-shopping duration-500 text-gray-800 hover:text-main cursor-pointer"></i>
-                      <div className="circle absolute -top-3 left-3 bg-main text-light text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
+                      <i className="fa-solid fa-cart-shopping  cursor-pointer"></i>
+                      <div className="circle absolute -top-3 left-3 bg-white   text-[#222] duration-500 group-hover:bg-main group-hover:text-white   font-bold text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
                         {cart?.numOfCartItems || 0}
                       </div>
                     </div>

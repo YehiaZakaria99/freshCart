@@ -36,18 +36,18 @@ export default function Categories() {
   return (
     <>
       {!isLoading ? (
-        <section className="categories py-20">
+        <section className="categories py-20  ">
           <div className="container">
             <div className="row flex flex-wrap gap-y-6 py-6 justify-center">
               {data?.data?.map((category, index) => (
                 <div
-                  className="box w-full md:w-1/2 lg:w-1/4 min-w-[220px]"
+                  className="box w-full md:w-1/2 lg:w-1/4 min-w-[220px] text-[#222222]"
                   key={index}
                 >
                   <div className="px-4">
                     <div
                       onClick={() => getCategoryId(category._id, category.name)}
-                      className="block w-full shadow-[0_0_4px_rgba(0,0,0,0.25)] group rounded-md duration-500 overflow-hidden hover:shadow-main"
+                      className="block w-full shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:shadow-[#222] duration-500 group rounded-md overflow-hidden "
                     >
                       <div className="img overflow-hidden h-[300px]">
                         <img

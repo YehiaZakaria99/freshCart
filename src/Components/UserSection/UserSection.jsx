@@ -26,9 +26,9 @@ export default function UserSection({
               {({ close }) => (
                 <MenuItem>
                   <div className="relative">
-                    <MenuButton className="flex items-center w-full px-4  text-sm text-gray-700">
-                      <span className="w-8 h-8 flex items-center justify-center px-3 rounded-full bg-main group hover:bg-blue-950 duration-500">
-                        <i className="fa-solid fa-user text-white text-sm duration-500"></i>
+                    <MenuButton className="flex items-center w-full px-4  text-sm ">
+                      <span className="w-8 h-8 flex items-center justify-center px-3 rounded-full bg-white  group hover:bg-main duration-500">
+                        <i className="fa-solid fa-user text-[#222] group-hover:text-[#fff] text-sm duration-500"></i>
                       </span>
                     </MenuButton>
 

@@ -36,17 +36,17 @@ export default function BrandDetails({ isClosed, setIsClosed, id }) {
         tabIndex={1}
         onKeyDown={keyDown}
         id="default-modal"
-        className={` duration-700 overflow-y-auto overflow-x-hidden bg-main bg-opacity-5 flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}
+        className={` duration-700 overflow-y-auto overflow-x-hidden bg-opacity-5 flex fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}
       >
-        <div className="relative w-full max-w-lg shadow-[0_0_10px] shadow-main rounded-md">
+        <div className="relative w-full max-w-lg ">
           {/* Modal content */}
-          <div className="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+          <div className="relative bg-[#222] shadow-[0_2px_8px_rgba(0,0,0,0.1)] rounded-lg ">
             {/* Modal header */}
-            <div className="absolute right-6 top-6 flex items-center justify-between rounded-t dark:border-gray-600 border-gray-200">
+            <div className="absolute right-6 top-6 flex items-center justify-between rounded-t  border-gray-200">
               <button
                 onClick={() => setIsClosed()}
                 type="button"
-                className="text-gray-400 duration-500 bg-transparent  hover:text-main rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="text-white duration-500 bg-transparent  hover:text-main rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                 data-modal-hide="default-modal"
               >
                 <svg
@@ -76,10 +76,10 @@ export default function BrandDetails({ isClosed, setIsClosed, id }) {
                   <div className="img">
                     <img src={data?.data.image} alt={data?.data.name} />
                   </div>
-                  <p className="text-2xl font-bold hover:text-main duration-500 leading-relaxed text-[#222] dark:text-gray-400">
+                  <p className="text-2xl font-bold hover:text-main duration-500 leading-relaxed text-white">
                     {data?.data.name}
                   </p>
-                  <p className="text-lg font-semibold hover:text-main duration-500 leading-relaxed text-[#222] dark:text-gray-400">
+                  <p className="text-lg font-semibold hover:text-main duration-500 leading-relaxed text-white">
                     {data?.data.slug}
                   </p>
                 </div>

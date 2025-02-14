@@ -9,7 +9,7 @@ import MainSlider from "./../MainSlider/MainSlider";
 export default function Home() {
   return (
     <>
-      <div className="container py-10">
+      <div className="container py-10  text-[#1E293B]">
         <MainSlider />
         <CategoriesSlider />
         <div className="box py-6 md:w-4/5 w-full mx-auto">

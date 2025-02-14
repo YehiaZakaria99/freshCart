@@ -21,7 +21,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <div className="container overflow-auto">
+      <div className="overflow-auto bg-[#F5F5F5]">
         <Outlet></Outlet>
       </div>
       <Footer />

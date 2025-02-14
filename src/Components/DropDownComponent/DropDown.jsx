@@ -23,33 +23,33 @@ export default function DropDown({
       {({ close }) => (
         <>
           {/* Menu Toggle Button */}
-          <MenuButton className="w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900">
-            <i className="fa-solid fa-bars text-gray-700 text-2xl"></i>
+          <MenuButton className="w-full justify-center rounded-md px-3 py-2 text-sm font-semibold ">
+            <i className="fa-solid fa-bars text-main text-2xl"></i>
           </MenuButton>
 
           {/* Menu Content */}
           <Transition
-            enter="transition duration-200 ease-out"
+            enter="transition duration-500 ease-out"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
-            leave="transition duration-150 ease-in"
+            leave="transition duration-500 ease-in"
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
             <MenuItems
               modal={false}
-              className="absolute duration-500 left-0 z-10 w-full rounded-md bg-white shadow-lg focus:outline-none"
+              className="absolute duration-500 left-0 z-10 w-full rounded-md bg-[#222] shadow-lg focus:outline-none"
             >
-              <div className="py-2">
+              <div className="py-2 duration-500">
                 {/* User Section */}
                 {userToken && (
                   <Menu as="div" className="relative">
                     {({ close: closeNested }) => (
                       <MenuItem>
                         <div className="relative">
-                          <MenuButton className="flex items-center w-full px-4 py-2 text-sm text-gray-700">
-                            <span className="w-8 h-8 flex items-center justify-center p-3 rounded-full bg-main group hover:bg-blue-950 duration-500">
-                              <i className="fa-solid fa-user text-white text-sm duration-500"></i>
+                          <MenuButton className="flex items-center w-full px-4 py-2 text-sm ">
+                            <span className="w-8 h-8 flex items-center justify-center p-3 rounded-full bg-white text-[#222]  group hover:bg-main hover:text-white duration-500">
+                              <i className="fa-solid fa-user  text-sm "></i>
                             </span>
                           </MenuButton>
 
@@ -64,7 +64,7 @@ export default function DropDown({
                           >
                             <MenuItems
                               modal={false}
-                              className="relative left-0 ms-3 w-1/2  rounded-md bg-gray-100 text-blue-950 shadow-lg px-3 py-3"
+                              className="small-links relative left-0 ms-3 w-1/2  rounded-md bg-main text-[#222] shadow-lg px-3 py-3"
                             >
                               <MenuItem>
                           <p className="text-center text-xl font-bold duration-500 mb-3">
@@ -78,7 +78,7 @@ export default function DropDown({
                               close();
                               closeNested()
                             }}
-                            className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
                           >
                             Your Orders
                           </NavLink>
@@ -90,7 +90,7 @@ export default function DropDown({
                               close();
                               closeNested()
                             }}
-                            className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
                           >
                             Your Addresses
                           </NavLink>
@@ -102,7 +102,7 @@ export default function DropDown({
                               close();
                               closeNested()
                             }}
-                            className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
                           >
                             Update Profile
                           </NavLink>
@@ -114,7 +114,7 @@ export default function DropDown({
                               close();
                               closeNested()
                             }}
-                            className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
                           >
                             Update Password
                           </NavLink>
@@ -134,7 +134,7 @@ export default function DropDown({
                       <NavLink
                         to="/"
                         onClick={close}
-                        className="block font-bold text-blue-950 hover:text-main duration-500 px-4 py-2 text-sm"
+                        className="block font-bold text-white hover:text-main duration-500 px-4 py-2 text-sm"
                       >
                         Home
                       </NavLink>
@@ -143,7 +143,7 @@ export default function DropDown({
                       <NavLink
                         to="/products"
                         onClick={close}
-                        className="block font-bold text-blue-950 hover:text-main duration-500 px-4 py-2 text-sm"
+                        className="block font-bold text-white hover:text-main duration-500 px-4 py-2 text-sm"
                       >
                         Products
                       </NavLink>
@@ -152,7 +152,7 @@ export default function DropDown({
                       <NavLink
                         to="/categories"
                         onClick={close}
-                        className="block font-bold text-blue-950 hover:text-main duration-500 px-4 py-2 text-sm"
+                        className="block font-bold text-white hover:text-main duration-500 px-4 py-2 text-sm"
                       >
                         Categories
                       </NavLink>
@@ -161,7 +161,7 @@ export default function DropDown({
                       <NavLink
                         to="/brands"
                         onClick={close}
-                        className="block font-bold text-blue-950 hover:text-main duration-500 px-4 py-2 text-sm"
+                        className="block font-bold text-white hover:text-main duration-500 px-4 py-2 text-sm"
                       >
                         Brands
                       </NavLink>
@@ -170,22 +170,22 @@ export default function DropDown({
                       <div className="lg:hidden flex gap-4 px-4 py-3">
                         <NavLink
                           className={
-                            "text-gray-800 hover:text-main duration-500"
+                            "text-[#fff] group hover:text-main duration-500"
                           }
                           to={"wishlist"}
                           onClick={close}
                         >
                           <div className="relative">
                             <i className="fas fa-heart text-lg"></i>
-                            <div className="circle absolute -top-3 left-3 bg-main text-light text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
+                            <div className="circle absolute -top-3 left-3 bg-white text-[#222] duration-500 group-hover:bg-main group-hover:text-white text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
                               {wishListData?.count || 0}
                             </div>
                           </div>
                         </NavLink>
-                        <NavLink to={"cart"} onClick={close}>
+                        <NavLink className={"text-[#fff] group hover:text-main"} to={"cart"} onClick={close}>
                           <div className="relative">
-                            <i className="fa-solid fa-cart-shopping duration-500 text-gray-800 hover:text-main cursor-pointer"></i>
-                            <div className="circle absolute -top-3 left-3 bg-main text-light text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
+                            <i className="fa-solid fa-cart-shopping duration-500  cursor-pointer"></i>
+                            <div className="circle absolute -top-3 left-3 bg-white text-[#222] duration-500 group-hover:bg-main group-hover:text-white text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
                               {cart?.numOfCartItems || 0}
                             </div>
                           </div>

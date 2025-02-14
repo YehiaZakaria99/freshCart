@@ -46,7 +46,7 @@ export default function Brands() {
                   <div className="px-4">
                     <div
                       onClick={() => getBrandId(brand._id)}
-                      className="block w-full shadow-[0_0_4px_rgba(0,0,0,0.25)] group rounded-md duration-500 overflow-hidden hover:shadow-main"
+                      className="block w-full shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:shadow-[#222] duration-500 group rounded-md overflow-hidden"
                     >
                       <div className="img overflow-hidden h-[300px]">
                         <img

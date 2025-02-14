@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --main-color: #0aad0a;
+  --main-color: #F57C00;
   --sec-color: #f0f3f2;
 }
 
@@ -16,3 +16,13 @@
   z-index: 99999999999999 !important;
 }
 
+
+.active .circle{
+  background: var(--main-color);
+  color: #fff;
+}
+
+
+.small-links .active{
+  color: #fff;
+}
