@@ -49,10 +49,13 @@ export default function ChangePassword() {
 
   const validationSchema = yup.object({
     currentPassword: yup.string().required("currentPassword is required"),
-    password: yup.string().required("password is required"),
+    password: yup.string()
+    .required("Password is required")
+    .matches(/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{5,9}$/, 
+      "Password must start with an uppercase letter, include at least one number, and be 5-9 characters long"),
     rePassword: yup
       .string()
-      .required("rePassword is required")
+      .required("Re-enter Password is required")
       .oneOf([yup.ref("password")], "password isn't match"),
   });
   const formik = useFormik({

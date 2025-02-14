@@ -43,21 +43,31 @@ export default function Register() {
   }
 
   const validationSchema = yup.object({
-    name: yup.string().required("name is required").min(3).max(10),
-    email: yup.string().required("email is required").email("invalid email"),
-    password: yup
-      .string()
-      .required("password is required")
-      .matches(/^[A-Z]\w{4,8}$/, "ex: Ahmed123"),
-    rePassword: yup
-      .string()
-      .required("rePassword is required")
-      .oneOf([yup.ref("password")], "password isn't match"),
-    phone: yup
-      .string()
-      .required("phone is required")
-      .matches(/^01[0125][0-9]{8}$/, "phone must be egyptian number "),
+    name: yup.string()
+      .required("Name is required")
+      .matches(/^[a-zA-Z\s]+$/, "Name must only contain letters")
+      .min(3, "Name must be at least 3 characters")
+      .max(10, "Name must be at most 10 characters"),
+    
+    email: yup.string()
+      .required("Email is required")
+      .email("Invalid email format"),
+    
+    password: yup.string()
+      .required("Password is required")
+      .matches(/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{5,9}$/, 
+        "Password must start with an uppercase letter, include at least one number, and be 5-9 characters long"),
+    
+    rePassword: yup.string()
+      .required("Re-enter password is required")
+      .oneOf([yup.ref("password")], "Passwords do not match"),
+    
+    phone: yup.string()
+      .required("Phone number is required")
+      .matches(/^(\+20)?01[0125]\d{8}$/, 
+        "Phone number must be a valid Egyptian number "),
   });
+  
 
   const formik = useFormik({
     initialValues: {

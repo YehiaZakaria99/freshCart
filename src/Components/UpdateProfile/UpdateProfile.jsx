@@ -15,7 +15,7 @@ export default function UpdateProfile() {
   let navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  let {  setUserToken } = useContext(userContext);
+  let { setUserToken } = useContext(userContext);
   const [userIcon, setUserIcon] = useState(false);
   const { setCart } = useContext(CartContext);
   const { setWishListData } = useContext(wishListContext);
@@ -50,11 +50,24 @@ export default function UpdateProfile() {
   }
 
   const validationSchema = yup.object({
-    name: yup.string().min(3).max(10),
-    email: yup.string().email("invalid email"),
+    name: yup
+      .string()
+      .required("Name is required")
+      .matches(/^[a-zA-Z\s]+$/, "Name must only contain letters")
+      .min(3, "Name must be at least 3 characters")
+      .max(10, "Name must be at most 10 characters"),
+
+    email: yup
+      .string()
+      .required("Email is required")
+      .email("Invalid email format"),
     phone: yup
       .string()
-      .matches(/^01[0125][0-9]{8}$/, "phone must be egyptian number "),
+      .required("Phone number is required")
+      .matches(
+        /^(\+20)?01[0125]\d{8}$/,
+        "Phone number must be a valid Egyptian number "
+      ),
   });
   const formik = useFormik({
     initialValues: {
