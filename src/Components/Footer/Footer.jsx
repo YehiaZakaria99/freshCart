@@ -12,7 +12,7 @@ export default function Footer() {
     
   return (
     <>
-      <footer className="py-3 bg-[#222] shadow-[0_0_3px] shadow-blue-950 w-full ">
+      <footer className="py-3 bg-green-950/90 shadow-[0_0_3px] shadow-blue-950 w-full ">
         <div className="container text-[#fff]">
           <div className="box space-y-3">
             <h3 className='text-2xl '>Get the FreshCart app</h3>

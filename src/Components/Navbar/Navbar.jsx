@@ -13,7 +13,7 @@ import UserSection from "./../UserSection/UserSection";
 export default function Navbar() {
   let { userToken, setUserToken } = useContext(userContext);
   const { cart, setCart } = useContext(CartContext);
-  const { wishListData ,setWishListData } = useContext(wishListContext);
+  const { wishListData, setWishListData } = useContext(wishListContext);
 
   let navigate = useNavigate();
   let [decoded, setDecoded] = useState("");
@@ -27,37 +27,41 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="py-5 bg-[#222222]  shadow-[0_0_0px] fixed z-[99999] w-full">
+      <nav className="py-5 bg-green-950/90  shadow-[0_0_0px] fixed z-[99999] w-full">
         <div className="container">
           <div className="box flex justify-between flex-wrap items-center gap-y-3 ">
-              <NavLink to={""}>
-                <img className="w-32 freshcartLogo" src={freshcartLogo} alt="freshcartLogo" />
-              </NavLink>
-              {userToken && (
-                <div className="links font-bold text-lg text-white hidden lg:flex space-x-5">
-                  <NavLink className={"duration-500 hover:text-main"} to={""}>
-                    Home{" "}
-                  </NavLink>
-                  <NavLink
-                    className={"duration-500 hover:text-main"}
-                    to={"products"}
-                  >
-                    Products
-                  </NavLink>
-                  <NavLink
-                    className={"duration-500 hover:text-main"}
-                    to={"categories"}
-                  >
-                    Categories
-                  </NavLink>
-                  <NavLink
-                    className={"duration-500 hover:text-main"}
-                    to={"brands"}
-                  >
-                    Brands
-                  </NavLink>
-                </div>
-              )}
+            <NavLink to={""}>
+              <img
+                className="w-32 freshcartLogo"
+                src={freshcartLogo}
+                alt="freshcartLogo"
+              />
+            </NavLink>
+            {userToken && (
+              <div className="links font-bold text-lg text-white hidden lg:flex space-x-5">
+                <NavLink className={"duration-500 hover:text-main"} to={""}>
+                  Home{" "}
+                </NavLink>
+                <NavLink
+                  className={"duration-500 hover:text-main"}
+                  to={"products"}
+                >
+                  Products
+                </NavLink>
+                <NavLink
+                  className={"duration-500 hover:text-main"}
+                  to={"categories"}
+                >
+                  Categories
+                </NavLink>
+                <NavLink
+                  className={"duration-500 hover:text-main"}
+                  to={"brands"}
+                >
+                  Brands
+                </NavLink>
+              </div>
+            )}
             <div className="flex px-1 items-center space-x-1">
               {userToken && (
                 <div className="hidden lg:flex gap-4 px-2  py-2">
@@ -72,7 +76,10 @@ export default function Navbar() {
                       </div>
                     </div>
                   </NavLink>
-                  <NavLink className={"text-[#fff] group hover:text-main duration-500"} to={"cart"}>
+                  <NavLink
+                    className={"text-[#fff] group hover:text-main duration-500"}
+                    to={"cart"}
+                  >
                     <div className="relative">
                       <i className="fa-solid fa-cart-shopping  cursor-pointer"></i>
                       <div className="circle absolute -top-3 left-3 bg-white   text-[#222] duration-500 group-hover:bg-main group-hover:text-white   font-bold text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">
@@ -89,9 +96,9 @@ export default function Navbar() {
                   decoded={decoded}
                   logOut={logOut}
                   setUserToken={setUserToken}
-                  cart = {cart}
+                  cart={cart}
                   setCart={setCart}
-                  wishListData= {wishListData}
+                  wishListData={wishListData}
                   setWishListData={setWishListData}
                 />
               </div>
