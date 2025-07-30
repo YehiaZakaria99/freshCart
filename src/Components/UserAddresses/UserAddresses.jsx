@@ -10,8 +10,7 @@ export default function UserAddresses() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingAddressId, setLoadingAddressId] = useState(null);
   const [isClosed, setIsClosed] = useState(true);
-  const {userToken} = useContext(userContext)
-
+  const { userToken } = useContext(userContext);
 
   async function getAddresses() {
     try {

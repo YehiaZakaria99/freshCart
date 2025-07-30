@@ -43,13 +43,13 @@ export default function DropDown({
               <div className="py-2 duration-500">
                 {/* User Section */}
                 {userToken && (
-                  <Menu as="div" className="relative">
+                  <Menu as="div" className="relative px-3">
                     {({ close: closeNested }) => (
                       <MenuItem>
                         <div className="relative">
                           <MenuButton className="flex items-center w-full px-4 py-2 text-sm ">
                             <span className="w-8 h-8 flex items-center justify-center p-3 rounded-full bg-white text-[#222]  group hover:bg-main hover:text-white duration-500">
-                              <i className="fa-solid fa-user  text-sm "></i>
+                              <i className="fa-solid text-green-950/90 fa-user  text-sm "></i>
                             </span>
                           </MenuButton>
 
@@ -64,61 +64,61 @@ export default function DropDown({
                           >
                             <MenuItems
                               modal={false}
-                              className="small-links relative left-0 ms-3 w-1/2  rounded-md bg-main text-[#222] shadow-lg px-3 py-3"
+                              className="small-links relative left-0  w-full  rounded-md bg-white text-[#222] shadow-lg px-3 py-3"
                             >
                               <MenuItem>
-                          <p className="text-center text-xl font-bold duration-500 mb-3">
-                            {decoded?.name}
-                          </p>
-                        </MenuItem>
-                        <MenuItem>
-                          <NavLink
-                            to="/allorders"
-                            onClick={() => {
-                              close();
-                              closeNested()
-                            }}
-                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
-                          >
-                            Your Orders
-                          </NavLink>
-                        </MenuItem>
-                        <MenuItem>
-                          <NavLink
-                            to="/userAddresses"
-                            onClick={() => {
-                              close();
-                              closeNested()
-                            }}
-                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
-                          >
-                            Your Addresses
-                          </NavLink>
-                        </MenuItem>
-                        <MenuItem>
-                          <NavLink
-                            to="/updateprofile"
-                            onClick={() => {
-                              close();
-                              closeNested()
-                            }}
-                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
-                          >
-                            Update Profile
-                          </NavLink>
-                        </MenuItem>
-                        <MenuItem>
-                          <NavLink
-                            to="/changepassword"
-                            onClick={() => {
-                              close();
-                              closeNested()
-                            }}
-                            className="block text-sm font-bold hover:text-white duration-500 mb-3"
-                          >
-                            Update Password
-                          </NavLink>
-                        </MenuItem>
+                                <p className="text-green-950/90 text-xl font-bold duration-500 mb-3">
+                                  {decoded?.name}
+                                </p>
+                              </MenuItem>
+                              <MenuItem>
+                                <NavLink
+                                  to="/allorders"
+                                  onClick={() => {
+                                    close();
+                                    closeNested();
+                                  }}
+                                  className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                                >
+                                  Your Orders
+                                </NavLink>
+                              </MenuItem>
+                              <MenuItem>
+                                <NavLink
+                                  to="/userAddresses"
+                                  onClick={() => {
+                                    close();
+                                    closeNested();
+                                  }}
+                                  className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                                >
+                                  Your Addresses
+                                </NavLink>
+                              </MenuItem>
+                              <MenuItem>
+                                <NavLink
+                                  to="/updateprofile"
+                                  onClick={() => {
+                                    close();
+                                    closeNested();
+                                  }}
+                                  className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                                >
+                                  Update Profile
+                                </NavLink>
+                              </MenuItem>
+                              <MenuItem>
+                                <NavLink
+                                  to="/changepassword"
+                                  onClick={() => {
+                                    close();
+                                    closeNested();
+                                  }}
+                                  className="block text-sm font-bold hover:text-main duration-500 mb-3"
+                                >
+                                  Update Password
+                                </NavLink>
+                              </MenuItem>
                             </MenuItems>
                           </Transition>
                         </div>
@@ -182,7 +182,11 @@ export default function DropDown({
                             </div>
                           </div>
                         </NavLink>
-                        <NavLink className={"text-[#fff] group hover:text-main"} to={"cart"} onClick={close}>
+                        <NavLink
+                          className={"text-[#fff] group hover:text-main"}
+                          to={"cart"}
+                          onClick={close}
+                        >
                           <div className="relative">
                             <i className="fa-solid fa-cart-shopping duration-500  cursor-pointer"></i>
                             <div className="circle absolute -top-3 left-3 bg-white text-[#222] duration-500 group-hover:bg-main group-hover:text-white text-sm p-[10px] w-4 h-4 flex justify-center items-center  rounded-[50%] ">

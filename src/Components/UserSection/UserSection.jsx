@@ -28,7 +28,7 @@ export default function UserSection({
                   <div className="relative">
                     <MenuButton className="flex items-center w-full px-4  text-sm ">
                       <span className="w-8 h-8 flex items-center justify-center px-3 rounded-full bg-white  group hover:bg-main duration-500">
-                        <i className="fa-solid fa-user text-[#222] group-hover:text-[#fff] text-sm duration-500"></i>
+                        <i className="fa-solid fa-user text-green-950/90 group-hover:text-[#fff] text-sm duration-500"></i>
                       </span>
                     </MenuButton>
 
@@ -94,7 +94,7 @@ export default function UserSection({
                             Update Password
                           </NavLink>
                         </MenuItem>
-                        
+
                         <MenuItem>
                           {/* Authentication */}
                           <div
