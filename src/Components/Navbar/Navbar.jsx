@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./Navbar.module.css";
-import freshcartLogo from "../../assets/images/navbar/freshcart-logo.svg";
+import logo from "../../assets/images/navbar/logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { userContext } from "../../Context/UserContext";
 import { CartContext } from "../../Context/CartContext";
@@ -30,9 +30,10 @@ export default function Navbar() {
       <nav className="py-5 bg-[#222222]  shadow-[0_0_0px] fixed z-[99999] w-full">
         <div className="container">
           <div className="box flex justify-between flex-wrap items-center gap-y-3 ">
-              <NavLink to={""}>
-                <img className="w-32 freshcartLogo" src={freshcartLogo} alt="freshcartLogo" />
-              </NavLink>
+              <Link className="flex items-center gap-2 text-white font-bold" to={""}>
+                <img className="w-10 logo" src={logo} alt="logo" />
+                <span className="text-3xl">ShopNest</span>
+              </Link>
               {userToken && (
                 <div className="links font-bold text-lg text-white hidden lg:flex space-x-5">
                   <NavLink className={"duration-500 hover:text-main"} to={""}>

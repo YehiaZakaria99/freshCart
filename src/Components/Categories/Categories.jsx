@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
-import styles from "./Categories.module.css";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import Loading from "./../Loading/Loading";
 import SubCategories from "./../SubCategories/SubCategories";
+import useCategories from "../../customHooks/useCategories";
 
 export default function Categories() {
   const [categoryId, setCategoryId] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [isClosed, setIsClosed] = useState(false);
-  async function getCategories() {
-    let response = await axios(
-      `https://ecommerce.routemisr.com/api/v1/categories`
-    );
-    return response.data;
-  }
-  const { data, isLoading } = useQuery({
-    queryKey: ["categories"],
-    queryFn: getCategories,
-  });
+
+  const { data, isLoading } = useCategories();
+
 
   // Handle category click
   function getCategoryId(categoryId, categoryName) {
@@ -39,7 +30,7 @@ export default function Categories() {
         <section className="categories py-20  ">
           <div className="container">
             <div className="row flex flex-wrap gap-y-6 py-6 justify-center">
-              {data?.data?.map((category, index) => (
+              {data?.data.data.map((category, index) => (
                 <div
                   className="box w-full md:w-1/2 lg:w-1/4 min-w-[220px] text-[#222222]"
                   key={index}

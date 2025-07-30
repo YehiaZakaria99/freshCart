@@ -8,28 +8,26 @@ import BrandDetails from "../BrandDetails/BrandDetails";
 export default function Brands() {
   const [brandId, setBrandId] = useState("");
   const [isClosed, setIsClosed] = useState(true);
-  // const [categoryName, setCategoryName] = useState("");
-  async function getBrands() {
-    let response = await axios(
-      `https://ecommerce.routemisr.com/api/v1/brands/?limit=50`
-    );
-    return response.data;
+
+  function getBrands() {
+    return axios(`https://ecommerce.routemisr.com/api/v1/brands/?limit=50`);
   }
+
   const { data, isLoading } = useQuery({
-    queryKey: ["brands"],
+    queryKey: ["getBrands"],
     queryFn: getBrands,
   });
 
-  // Handle category click
+  // Handle brand click
   function getBrandId(brandId) {
-    setBrandId(brandId); // Update category ID
+    setBrandId(brandId); // Update brand ID
     setIsClosed(false); // Open the modal
   }
 
   // Handle modal close
   function handleClose() {
     setIsClosed(true);
-    setCategoryId(""); // Reset category ID when closing
+    setBrandId(""); // Reset brand ID when closing
   }
 
   return (
@@ -38,7 +36,7 @@ export default function Brands() {
         <section className="brands py-20">
           <div className="container">
             <div className="row flex flex-wrap gap-y-6 py-6 justify-center">
-              {data?.data?.map((brand, index) => (
+              {data?.data?.data.map((brand, index) => (
                 <div
                   className="box w-full md:w-1/2 lg:w-1/4 min-w-[220px]"
                   key={index}
@@ -65,14 +63,13 @@ export default function Brands() {
             </div>
           </div>
           {/* ############################################ MODAL ############################################ */}
-          {
-            !isClosed &&
+          {!isClosed && (
             <BrandDetails
               isClosed={isClosed}
               setIsClosed={handleClose}
               id={brandId}
             />
-          }
+          )}
         </section>
       ) : (
         <Loading />
