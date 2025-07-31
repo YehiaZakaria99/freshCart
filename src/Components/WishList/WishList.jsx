@@ -14,7 +14,7 @@ export default function WishList() {
     <>
       {/* {!isLoading ? ( */}
       <>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-10 my-20 px-10">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-10 my-20 px-10 min-h-screen">
           <h1 className="text-3xl font-bold gap-3 py-3 justify-center items-center mb-6 flex">
             <i className="fa-regular fa-heart fa-2x"></i>
             <span className="">My Wishlist</span>

@@ -18,7 +18,7 @@ export default function Cart() {
     <>
       {!isLoading ? (
         <>
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-10 my-20">
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-10 my-20 min-h-screen">
             <div className="text-center my-4 py-4 space-y-2">
               <h3 className="font-bold text-3xl">My Cart</h3>
             </div>
@@ -121,22 +121,32 @@ export default function Cart() {
                 ))}
               </tbody>
             </table>
-              <div className="clear text-center py-8">
-                <button
-                  onClick={() => clearCart()}
-                  className={`${!cart?.data?.products?.length && "hidden"} bg-red-700 text-light px-7 py-2 rounded-lg text-lg font-semibold`}
-                >
-                  Clear Cart
-                </button>
-              </div>
+            <div className="clear text-center py-8">
+              <button
+                onClick={() => clearCart()}
+                className={`${
+                  !cart?.data?.products?.length && "hidden"
+                } bg-red-700 text-light px-7 py-2 rounded-lg text-lg font-semibold`}
+              >
+                Clear Cart
+              </button>
+            </div>
             <div className="flex gap-y-4  px-5 py-8 justify-between flex-wrap items-center">
-              <h3 className={`${!cart?.data?.products?.length && "hidden"} text-2xl font-bold`}>
+              <h3
+                className={`${
+                  !cart?.data?.products?.length && "hidden"
+                } text-2xl font-bold`}
+              >
                 Total Price:{" "}
                 <span className="text-xl font-semibold text-main">
                   {cart?.data?.totalCartPrice} EGP
                 </span>
               </h3>
-              <h3 className={`${cart?.data?.products?.length && "hidden"} text-center text-2xl font-bold`}>
+              <h3
+                className={`${
+                  cart?.data?.products?.length && "hidden"
+                } text-center text-2xl font-bold`}
+              >
                 Your cart is empty
               </h3>
               <div className="flex flex-1 justify-center sm:justify-end">
@@ -147,15 +157,12 @@ export default function Cart() {
                   <button
                     onClick={() =>
                       !cart?.data?.products?.length &&
-                      toast(
-                        "Your Cart is Empty",
-                        {
-                          icon: (
-                            <i className=" fa-solid fa-circle-exclamation text-red-400"></i>
-                          ),
-                          position: "center",
-                        },
-                      )
+                      toast("Your Cart is Empty", {
+                        icon: (
+                          <i className=" fa-solid fa-circle-exclamation text-red-400"></i>
+                        ),
+                        position: "center",
+                      })
                     }
                   >
                     Check Out
