@@ -14,7 +14,7 @@ export default function Footer() {
       <footer className="py-3 bg-[#222] shadow-[0_0_3px] shadow-blue-950 w-full ">
         <div className="container text-[#fff]">
           <div className="box space-y-3">
-            <h3 className="text-2xl ">Get the ShopNest app</h3>
+            <h3 className="text-2xl ">Get the BuyMaze app</h3>
             <p className="text-gray-500">
               We will send you a link, open it on your phone to download the
               app.
@@ -59,7 +59,7 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="deliveries paymen flex flex-wrap md:flex-nowrap justify-center space-x-2 px-4  items-center">
-                  <h4 className="text-center">Get deliveries with ShopNest</h4>
+                  <h4 className="text-center">Get deliveries with BuyMaze</h4>
                   <div className="flex flex-wrap justify-center md:flex-nowrap">
                     <img
                       className="h-10 object-contain"

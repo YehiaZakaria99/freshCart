@@ -32,7 +32,7 @@ export default function Navbar() {
           <div className="box flex justify-between flex-wrap items-center gap-y-3 ">
               <Link className="flex items-center gap-2 text-white font-bold" to={""}>
                 <img className="w-10 logo" src={logo} alt="logo" />
-                <span className="text-3xl">ShopNest</span>
+                <span className="text-3xl">BuyMaze</span>
               </Link>
               {userToken && (
                 <div className="links font-bold text-lg text-white hidden lg:flex space-x-5">
