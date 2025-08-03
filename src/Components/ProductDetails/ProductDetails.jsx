@@ -47,8 +47,8 @@ export default function ProductDetails() {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="container">
-          <section className="productDetails py-10">
+        <div className="container min-h-screen overflow-auto">
+          <section className="productDetails py-10 mt-20">
             <div className="box flex items-center gap-6 flex-wrap md:flex-nowrap">
               <div className="w-full md:w-1/3 img lg:w-1/4 ">
                 <Slider {...settings}>
